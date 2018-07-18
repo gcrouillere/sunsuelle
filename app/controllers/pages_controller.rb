@@ -1,7 +1,9 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :contact, :google906057532e2dbb7e, :robots, :legal, :cgv]
+  skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :contact, :google906057532e2dbb7e, :robots, :legal, :cgv, :about]
 
   def home
+    @ceramiques = Ceramique.last(4)
+    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
     @dev_redirection = "https://www.creermonecommerce.fr/"
     render "home_#{@active_theme.name}"
   end
@@ -13,6 +15,10 @@ class PagesController < ApplicationController
   def info
     @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
     render "info_#{@active_theme.name}"
+  end
+
+  def about
+    @dev_redirection = "https://www.creermonecommerce.fr"
   end
 
   def contact

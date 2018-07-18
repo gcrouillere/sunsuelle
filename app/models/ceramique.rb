@@ -13,10 +13,13 @@ class Ceramique < ApplicationRecord
     add_attribute :translated_description_en
     add_attribute :translated_category_en
     add_attribute :translated_category_fr
-    attribute :category
+    attribute :categories
   end
 
-  belongs_to :category
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+  has_many :product_theme_associations
+  has_many :product_themes, through: :product_theme_associations
   belongs_to :offer, required: false
   has_attachments :photos, maximum: 4, dependent: :destroy
   has_many :basketlines, dependent: :destroy
@@ -24,7 +27,7 @@ class Ceramique < ApplicationRecord
   monetize :price_cents
 
   validates :photos, presence: true
-  validates :category, presence: true
+  validates :categories, presence: true
   validates :name, presence: true
   validates :description, presence: true
   validates :weight, presence: true, numericality: { greater_than: 0, less_than: 30001 , only_integer: true, message: 'Le poids doit être compris entre 1 et 30 000 grammes. Pas d\'expédition Colissimo possible en dehors de cette plage.' }
@@ -34,7 +37,7 @@ class Ceramique < ApplicationRecord
 
   def to_param
     name_param = self.send(I18n.locale == :fr ? (name_fr.present? ? "name_fr" : (name_en.present? ? "name_en" : "name")) : (name_en.present? ? "name_en" : "name")) || ""
-    category_param = category.send(I18n.locale == :fr ? (category.name_fr.present? ? "name_fr" : (category.name_en.present? ? "name_en" : "name")) : (category.name_en.present? ? "name_en" : "name")) || ""
+    category_param = categories.map{|cat| cat.send(I18n.locale == :fr ? (cat.name_fr.present? ? "name_fr" : (cat.name_en.present? ? "name_en" : "name")) : (cat.name_en.present? ? "name_en" : "name")) || ""}.join("-")
     [id, name_param.parameterize, category_param.parameterize].join("-")
   end
 
@@ -55,10 +58,10 @@ class Ceramique < ApplicationRecord
   end
 
   def translated_category_fr
-    self.category.name_fr
+    self.categories.map{|c| c.name_fr}.join(" - ")
   end
 
   def translated_category_en
-    self.category.name_en
+    self.categories.map{|c| c.name_en}.join(" - ")
   end
 end

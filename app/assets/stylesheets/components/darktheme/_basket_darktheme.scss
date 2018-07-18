@@ -34,26 +34,6 @@
   }
 }
 
-.shipping-cost {
-  display: flex;
-  justify-content: center;
-  select {
-    width: 150px;
-    margin: 0 10px;
-  }
-}
-@media all and (max-width: 600px) {
-  .shipping-cost {
-    select {
-      width: 110px !important;
-      margin: 0 5px;
-    }
-    h5 {
-      font-size: 16px;
-    }
-  }
-}
-
 .total-darktheme {
   display: flex;
   justify-content: flex-end;

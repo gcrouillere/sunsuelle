@@ -14,13 +14,13 @@
           <span><i class="fas fa-plus"></i> Ajouter un article</span>
         <% end %>
       <% else %>
-        <h1><%= t(:blog_main_title, name: "#{ENV['FIRSTNAME'].upcase} #{ENV['LASTNAME'].upcase}")%></h1>
+        <h1><%= t(:blog_main_title, name: "#{ENV['APPNAME'].upcase}")%></h1>
       <% end %>
 
-      <% @articles.each do |article| %>
+      <% @articles.each_with_index do |article, index| %>
         <div class="article-card-and-link">
           <%= link_to article_path(article) do %>
-            <div class="index-article-card">
+            <div class="index-article-card <%= index.odd? ? "article-impair" : "article-pair" %> <%= article == @articles.last ? "last-article" : "" %>">
               <div class="left-block-article article-card<%=article.id%>">
                 <% if article.article_main_photo %>
                   <style>

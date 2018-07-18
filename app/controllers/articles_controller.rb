@@ -11,6 +11,8 @@ class ArticlesController < ApplicationController
 
   def show
     @article = Article.find(params[:id])
+    @markdown_article = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
+    @markdown_article = @markdown_article.render(@article.content || "")
     @comments = Article.where(name: "#{@article.id}-commentaire").order(updated_at: :desc)
   end
 

@@ -79,14 +79,14 @@
             <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
               <% ceramique == @ceramiques.last ? additionnal_class = "last-ceramique" : additionnal_class = "" %>
               <div class="ceramiquecard-darktheme ceramiquecardimage-<%=index%> <%=additionnal_class%>">
-                  <style>
-                    .ceramiquecardimage-<%=index%> {
-                      background-image: url(<%= cl_image_path ceramique.photos[0].path, quality: "auto" %>);
-                      background-size: cover;
-                      background-position-y: center;
-                      background-position-x: center;
-                    }
-                  </style>
+                <style>
+                  .ceramiquecardimage-<%=index%> {
+                    background-image: url(<%= cl_image_path ceramique.photos[0].path, quality: "auto" %>);
+                    background-size: cover;
+                    background-position-y: center;
+                    background-position-x: center;
+                  }
+                </style>
                 <% if ceramique.offer%>
                   <% if ceramique.offer.discount > 0 %>
                     <p class="discount-offer">-<%= (ceramique.offer.discount * 100).to_i %>%</p>

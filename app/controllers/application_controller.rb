@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :retrieve_admin
   before_action :check_theme
   before_action :uniq_categories
+  before_action :uniq_themes
   layout :layout_by_resource
   after_action :store_location
 
@@ -28,14 +29,21 @@ class ApplicationController < ActionController::Base
   end
 
   def check_theme
-    @active_theme = ::Theme.where(active: true).first || ::Theme.create(active: true, name: "default")
+    @active_theme = ::Theme.where(active: true).first || ::Theme.create(active: true, name: "lighttheme")
   end
 
   def uniq_categories
     @uniq_categories = ::Ceramique.all.map do |ceramique|
-      ceramique.category.name
+      ceramique.categories.map{|categorie| categorie.name}
     end
-    @uniq_categories = @uniq_categories.uniq.sort
+    @uniq_categories = @uniq_categories.flatten.uniq.sort
+  end
+
+  def uniq_themes
+    @uniq_themes = ::Ceramique.all.map do |ceramique|
+      ceramique.product_themes.map{|theme| theme.name}
+    end
+    @uniq_themes = @uniq_themes.flatten.uniq.sort
   end
 
   #DEVISE methods:

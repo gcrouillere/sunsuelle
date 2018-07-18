@@ -1,39 +1,75 @@
 <!-- LAPTOP -->
-
   <div id="footer-lighttheme">
-    <div class="contact">
-      <div class="connect">
-        <h3><%=t(:stay_caught_up)%></h3>
-        <h4>Facebook</h4>
-        <h4>Instagram</h4>
-        <div class="hidden-xs hidden-sm hidden-md">
-          <% if user_signed_in? %>
-            <% if current_user.admin %>
-              <%= link_to admin_root_path, class: "admin-link" do %>
-                <h4>Administration</h4>
-              <% end %>
-            <% end %>
-            <%= link_to destroy_user_session_path, method: :delete do %>
-              <h4><%=t(:unconnect)%></h4>
-            <% end %>
-          <% else %>
-            <%= link_to new_user_session_path, class: "connect-link" do %>
-              <h4><%=t(:connect)%></h4>
-            <% end %>
-          <% end %>
+    <div class="footer-top-section">
+      <%= render 'shared/subscribe' %>
+    </div>
+    <div class="footer-middle-section">
+      <div class="footer-middle-box">
+        <h4><%=t(:secured_payments)%></h4>
+        <div class="cards">
+           <%= image_tag "mastercard.svg", class: "mastercard"%> <%= image_tag "visa.svg", class: "visa"%> <%= image_tag "american-express.svg", class: "american-express"%> <%= image_tag "paypal.svg", class: "paypal-logo"%>
         </div>
       </div>
-      <div class="connect">
-        <h3><%=t(:information)%></h3>
-        <%= link_to cgv_path do%>
-          <h4><%=t(:cgv_short)%></h4>
-        <% end %>
-        <%= link_to legal_path do%>
-          <h4><%=t(:data)%></h4>
-        <% end %>
+      <div class="footer-middle-box">
+        <h4><%=t(:shipping)%></h4>
+        <%= image_tag "colissimo.png", class: "colissimo"%>
+        <p><%= t(:int_shipping)%></p>
+      </div>
+      <div class="footer-middle-box">
+        <h4><%= t(:customer_service)%></h4>
+        <p class="last-box-first-p hidden-xs hidden-sm"><%=t(:customer_service_hours)%></p>
+        <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_1)%></p>
+        <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_2)%></p>
+        <p class="last-box-last-p"><%= ENV['TELEPHONE'] %></p>
       </div>
     </div>
-    <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere", class: "link-guillaume" do %>
-      <%= image_tag  'legolight.svg', alt: "Guillaume Crouillere - Developpeur WEB indépendant"%>
-    <% end %>
+    <div class="footer-bottom-section">
+      <div class="contact">
+        <div class="connect">
+          <h3><%= t(:our_products) %></h3>
+          <% @uniq_categories.each do |category|%>
+           <h4><%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %></h4>
+          <% end %>
+        </div>
+        <div class="connect">
+          <h3><%= t(:our_collections) %></h3>
+          <% @uniq_themes.each do |theme|%>
+            <h4><%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %></h4>
+          <% end %>
+        </div>
+        <div class="connect">
+          <h3><%=t(:stay_caught_up).upcase%></h3>
+          <h4>Facebook</h4>
+          <h4>Instagram</h4>
+        </div>
+        <div class="connect">
+          <h3><%=t(:information).upcase%></h3>
+          <%= link_to cgv_path do%>
+            <h4><%=t(:cgv_short)%></h4>
+          <% end %>
+          <%= link_to legal_path do%>
+            <h4><%=t(:data)%></h4>
+          <% end %>
+          <div class="hidden-xs hidden-sm hidden-md">
+            <% if user_signed_in? %>
+              <% if current_user.admin %>
+                <%= link_to admin_root_path, class: "admin-link" do %>
+                  <h4>Administration</h4>
+                <% end %>
+              <% end %>
+              <%= link_to destroy_user_session_path, method: :delete do %>
+                <h4><%=t(:unconnect)%></h4>
+              <% end %>
+            <% else %>
+              <%= link_to new_user_session_path, class: "connect-link" do %>
+                <h4><%=t(:connect)%></h4>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere", class: "link-guillaume" do %>
+        <%= image_tag  'legolight.svg', alt: "Guillaume Crouillere - Developpeur WEB indépendant"%>
+      <% end %>
+    </div>
   </div>

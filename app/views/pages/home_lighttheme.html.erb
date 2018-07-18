@@ -7,57 +7,29 @@
 
 <%= render 'shared/home_pics' %>
 <%= render 'shared/home_right_pics' %>
+<%= render 'shared/lighttheme_photo_loading'%>
 
-  <div class="homeimagescontainer hidden-xs">
-    <%= photo_update('productphoto', 350, '', '', 30, '.homepic', "Mise à jour photo accueil gauche")%>
-    <%= photo_update('logophoto', 130, '', '', 30, '.logopic', "Mise à jour logo")%>
-    <%= photo_update('homerightphotos', 130, '', '', 785, '.homerightphotos', "Mise à jour photos accueil droite")%>
-    <div class="imagehomeleft col-sm-8">
-      <style>
-        .imagehomeleft {
-          background-image: url(<%= @homepicpath %>);
-          background-size: cover;
-          background-position-y: center;
-          background-position-x: center;
-        }
-      </style>
+  <div class="homeimagescontainer">
+    <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
+    <%= photo_update('productphotomobile', 30, '', '', 395, '.homepicmobile', "Mise à jour photo  d'accueil version mobile")%>
+    <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
+    <%= photo_update('promophoto', 300, '', '', 30, '.promophoto', "Mise à jour photo promotion")%>
+    <div class="imagehomeleft">
+      <%= cl_image_tag @homepicpath, class: "hidden-xs" %>
+      <%= cl_image_tag @homepicpathmobile, class: "hidden-sm hidden-md hidden-lg" %>
     </div>
-    <div class="imageshomeright col-sm-4">
-      <%= image_tag @homerightphoto1 %>
-      <%= image_tag @homerightphoto2 %>
-    </div>
-  </div>
-  <div class="homeimagescontainer-mobile">
-    <div class="imagehomeleft-mobile hidden-sm hidden-md hidden-lg">
-      <%= image_tag @homepicpath %>
-      <%= image_tag @homerightphoto1 %>
-      <%= image_tag @homerightphoto2 %>
-    </div>
-  </div>
-
-  <div class="hometext hidden-xs hidden-sm">
-    <% if user_signed_in? && current_user.admin %>
-      <% article_typing("accueil_lighttheme", "vertical", "markdown1", "live-text4", "input4") %>
-      <% @markdown = @markdown1 %>
-      <div class="live-text ">
-        <%= render 'shared/articletyping' %>
-      </div>
-    <% else %>
-      <div class="plain-text">
-        <% article_display("accueil_lighttheme", "vertical") %>
-        <%= @markdown.html_safe %>
+    <% if @promophoto && @front_offer %>
+      <div class="promo-frame">
+        <%= link_to ceramiques_path(offer: true) do %>
+          <%= cl_image_tag @promophoto %>
+        <% end %>
       </div>
     <% end %>
-  </div>
-
-  <div class="hometext-mobile hidden-md hidden-lg">
-    <div class="plain-text">
-      <% article_display("accueil_lighttheme", "vertical") %>
-      <%= @markdown.html_safe %>
+    <div class="ceramiques-in-home">
+      <span class="latest-products">Les dernières créations</span>
+      <%= render  'shared/ceramique_cards_lighttheme'%>
     </div>
   </div>
-
-  <%= render 'shared/subscribe' %>
 
 <% content_for(:after_js) do %>
   <script type="application/ld+json">

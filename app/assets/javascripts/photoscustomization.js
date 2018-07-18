@@ -21,6 +21,13 @@ $(document).ready(function() {
     $('.homepic .photo-button').removeClass('hidden');
   });
 
+  $('.promophoto .attachinary_container').on('click', function(e){
+    $('.promophoto .photo-button').removeClass('hidden');
+  });
+  $('.promophoto input').on('click', function(e){
+    $('.promophoto .photo-button').removeClass('hidden');
+  });
+
   $('.avatarpic .attachinary_container').on('click', function(e){
     $('.avatarpic .photo-button').removeClass('hidden');
   });
@@ -75,6 +82,13 @@ $(document).ready(function() {
   });
   $('.darktheme4photo input').on('click', function(e){
     $('.darktheme4photo .photo-button').removeClass('hidden');
+  });
+
+  $('.info2photopic .attachinary_container').on('click', function(e){
+    $('.info2photopic .photo-button').removeClass('hidden');
+  });
+  $('.info2photopic input').on('click', function(e){
+    $('.info2photopic .photo-button').removeClass('hidden');
   });
 
 });

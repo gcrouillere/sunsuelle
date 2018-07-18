@@ -28,6 +28,7 @@ en:
   facebook_connect_mobile: "Connect with"
   alternate_connection: "Or connect with your email:"
   connect: "Sign-in"
+  devise_connect: "Sign-in"
   unconnect: "Sign-out"
   creat_account: "Create an account"
   remember_me: "Remember me"
@@ -88,8 +89,18 @@ en:
   total_amount: "Total amount"
   total_articles: "Product(s) total"
   total_port: "Shipping costs"
+  shipping: "Shipping"
+  int_shipping: "Worldwide shipping"
+  customer_service: "Customer service"
+  customer_service_hours: "Monday to Friday, 9:30am 1pm - 2pm 5:30pm"
+  customer_service_hours_mobile_1: "Monday to Friday"
+  customer_service_hours_mobile_2: "9:30am 1pm - 2pm 5:30pm"
+  our_products: "OUR PRODUCTS"
+  our_collections: "OUR COLLECTIONS"
+  collection: "Lists"
   stripe_paypal: "Pay by card or by Paypal:"
   secured_payment: "Payment secured by"
+  secured_payments: "Secured payments"
   cards: "Accepted cards"
   promo: "Promo code"
   order_take_away: "Pick up your order in shop"
@@ -126,7 +137,7 @@ en:
   stay_caught_up: "Stay caught up"
   news_letter_subscribe: "Subscribe to newsletter below"
   subscribe: "SUBSCRIBE"
-  information: "Information"
+  information: "Sunsuelle & you"
   see_products: "DISCOVER THESE PRODUCTS"
   zoom: "Adjust zoom level with mousewheel or touchpad"
   contact: "Contact"
@@ -134,6 +145,7 @@ en:
   first_last_name: "First name Last name"
   send_your_message: "Type your message here"
   send: "SEND"
+  about: "About"
   activerecord:
     errors:
       messages:
@@ -152,6 +164,9 @@ en:
         one: "Category"
         other: "Categories"
       calendarupdate: "Calendar update"
+      product_theme:
+        one: "Product theme"
+        other: "Product themes"
       lesson:
         one: "Lesson"
         other: "Lessons"
@@ -206,6 +221,9 @@ en:
         title: "Title"
         content: "Content"
         article_main_photo: "Article photo"
+      promo:
+        one: "Promo code"
+        other: "Promo codes"
   date:
     abbr_day_names:
     - Sun

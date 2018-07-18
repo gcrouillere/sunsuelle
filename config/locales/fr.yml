@@ -28,8 +28,9 @@ fr:
   facebook_connect: "Créer un compte avec"
   facebook_connect_mobile: "Connexion avec"
   alternate_connection: "Ou connexion avec votre email :"
-  connect: "Se connecter"
-  unconnect: "Se déconnecter"
+  connect: "Mon compte"
+  devise_connect: "Se connecter"
+  unconnect: "Se deconnecter"
   remember_me: "Se souvenir de moi"
   creat_account: "Créer un compte"
   index_description: "Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits."
@@ -103,8 +104,18 @@ fr:
   total_amount: "Montant Total"
   total_articles: "Total article(s)"
   total_port: "Frais de port"
+  shipping: "Livraisons"
+  int_shipping: "France, DOM, TOM & international"
+  customer_service: "Service clients"
+  customer_service_hours: "Du lundi au vendredi 9h30 à 13h - 14h à 17h30"
+  customer_service_hours_mobile_1: "Du lundi au vendredi"
+  customer_service_hours_mobile_2: "9h30 à 13h - 14h à 17h30"
+  our_products: "NOS PRODUITS"
+  our_collections: "NOS COLLECTIONS"
+  collection: "Listes"
   stripe_paypal: "Payer par carte ou par Paypal :"
   secured_payment: "Paiement sécurisé par"
+  secured_payments: "Paiements sécurisés"
   cards: "Cartes acceptées"
   promo: "Code promo"
   order_take_away: "Récupérer votre commande en magasin"
@@ -122,14 +133,14 @@ fr:
   stay_caught_up: "Gardons le contact"
   news_letter_subscribe: "Inscrivez vous ci-dessous à la newsletter"
   subscribe: "S'INSCRIRE"
-  information: "Informations"
+  information: "Sunsuelle & vous"
   see_products: "VOIR CES PRODUITS"
   zoom: "Changez le niveau de zoom avec la molette de la souris ou le touchpad"
   contact: "Contact"
   email_adress: "Adresse email"
   first_last_name: "Prénom Nom"
   send_your_message: "Entrez votre message"
-
+  about: "A propos"
   send: "ENVOYER"
   day:
     one: "Jour"
@@ -159,6 +170,9 @@ fr:
         one: "Catégorie"
         other: "Catégories"
       calendarupdate: "Bloquage de période"
+      product_theme:
+        one: "Thème produit"
+        other: "Thèmes produit"
       lesson:
         one: "Réservation"
         other: "Réservations"
@@ -168,6 +182,9 @@ fr:
       order:
         one: "Commande"
         other: "Commandes"
+      promo:
+        one: "Code promo"
+        other: "Codes promo"
     attributes:
       user:
         first_name: "Prénom"
@@ -187,6 +204,9 @@ fr:
         category: "Catégorie"
         price_cents: "Prix en cents d'€"
         weight: "Poids"
+        categories: "Catégories"
+        product_themes: "Thèmes produit"
+        active: "Actif"
       category:
         name: "Nom"
       lesson:
@@ -214,11 +234,16 @@ fr:
         title: "Titre"
         content: "Contenu"
         article_main_photo: "Photo article"
+      product_theme:
+        name: "Nom"
   active_admin:
     models:
       calendarupdate:
         one: "Bloquer des périodes dans le calendrier"
         other: "Bloquer des périodes dans le calendrier"
+      product_theme:
+        one: "Thème produit"
+        other: "Thèmes produit"
     dashboard: Tableau de bord
     dashboard_welcome:
       welcome: "Welcome to Active Admin. This is the default dashboard page."

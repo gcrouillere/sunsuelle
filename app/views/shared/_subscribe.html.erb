@@ -1,8 +1,19 @@
-<% unless session[:email]%>
-<div class="subscribe-text">
-  <h2><%=t(:stay_caught_up)%></h2>
-  <p></p>
-</div>
+<% unless session[:email] %>
+  <div class="subscribe-text">
+    <% if user_signed_in? && current_user.admin && params[:controller] != "articles" %>
+      <% article_typing("subscribe-text", "vertical", "markdown4", "live-text4", "input4") %>
+      <% @markdown = @markdown4 %>
+      <div class="live-text ">
+        <%= render 'shared/articletyping' %>
+      </div>
+    <% else %>
+      <div class="plain-text">
+        <% article_display("subscribe-text", "vertical") %>
+        <%= @markdown.html_safe %>
+      </div>
+    <% end %>
+  </div>
+
   <form action="/user-subscribe" method="post" authenticity_token="true" class="subscribe-form">
     <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
     <input type="text" name="user[email]" id="email" placeholder="<%=t(:email_adress)%>" class="subscribe-input">

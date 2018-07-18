@@ -17,9 +17,12 @@ class User < ApplicationRecord
   attr_accessor :consented
 
   has_attachment :productphoto
+  has_attachment :promophoto
   has_attachment :productphotomobile
   has_attachment :lessonphoto
   has_attachment :avatarphoto
+  has_attachment :info1photo
+  has_attachment :info2photo
   has_attachment :cityphoto
   has_attachment :logophoto
   has_attachments :homerightphotos, maximum: 2

@@ -1,16 +1,18 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
-  permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
+  permit_params :name, :description, :stock, :weight, :price_cents, :active, :position, photos: [], category_ids: [], product_theme_ids: []
   menu priority: 1
   config.filters = false
 
   index do
     column :id
+    column :position
+    column :active
     column :name
     column :description
     column :stock
     column :weight
     column "Catégorie" do |ceramique|
-      ceramique.category.name
+      ceramique.categories.map{|category| category.name}.join(" - ")
     end
     column :price_cents
     column "Nb de ventes - CA", :sortable => 'ceramique.basketlines.sum(:quantity)* ceramique.price' do |ceramique|
@@ -23,9 +25,12 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     f.inputs "" do
       f.input :name
       f.input :description
+      f.input :position
+      f.input :active
       f.input :stock
       f.input :weight, :hint => "Poids en grammes"
-      f.input :category
+      f.input :categories, as: :check_boxes
+      f.input :product_themes, as: :check_boxes
       f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
       f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
     end
@@ -39,7 +44,7 @@ show do |ceramique|
     row :stock
     row :weight
     row "Categorie" do |ceramique|
-      ceramique.category.name
+      ceramique.categories
     end
     row :price_cents
     row :images do |ceramique|
@@ -52,11 +57,13 @@ show do |ceramique|
 
  csv do
     column :name
+    column :position
+    column :active
     column :description
     column :stock
     column :weight
     column "Catégorie" do |ceramique|
-      ceramique.category.name
+      ceramique.categories
     end
     column :price_cents
     column "Nb de ventes - CA" do |ceramique|

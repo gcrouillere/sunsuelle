@@ -18,7 +18,7 @@
     right: 20px;
     font-size: 27px;
     cursor: pointer;
-    color: black;
+    color: white;
   }
   .label-search {
     font-weight: $font-weight-label;
@@ -37,7 +37,7 @@
     margin-bottom: 20px;
     margin-top: 5px;
     color: white;
-    background: linear-gradient(to right, #666, #fefefe);
+    background: linear-gradient(to right, #EBC05A, #E4554E);
     border-radius: 1px;
     padding: 10px;
     box-shadow: 1px 1px 1px grey;
@@ -47,7 +47,7 @@
     margin: 20px 0 15px 0;
     font-size: 19px;
     font-weight: $font-weight-h5-search;
-    background-color: #cecece;
+    background-color: #eee;
     padding: 5px;
     border-radius: 1px;
     box-shadow: 1px 1px 1px grey;

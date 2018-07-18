@@ -5,121 +5,42 @@
   <%= t(:info_title)%>
 <% end %>
 
-<%= render 'shared/info_pics' %>
+ <div class="container">
 
-<div class="container">
-  <div class="row">
-
-  <!-- LAPTOP -->
-    <div class="hidden-xs hidden-sm col-sm-12">
-      <div class="wrapper-lighttheme">
-        <%= photo_update('avatarphoto', 35, '', '', 15, '.avatarpic', "Mise à jour photo perso")%>
-        <%= @avatarpictag %>
-
-        <% if user_signed_in? && current_user.admin %>
-          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
-          <% @markdown = @markdown1 %>
+   <div class="row agenda">
+    <div class="col-xs-12 col-sm-5 agenda-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("agenda", "vertical", "markdown1", "live-text1", "input1") %>
+        <% @markdown = @markdown1 %>
+        <div class="live-text">
           <%= render 'shared/articletyping' %>
-        <% else %>
-            <div id="live-text">
-              <% article_display("info", "horizontal") %>
-              <%= @markdown.html_safe %>
-            </div>
-        <% end %>
-      </div>
-
-      <div class="localisation">
-        <%= photo_update('cityphoto', 15, '', '', 15, '.citypic', "Mise à jour photo ville")%>
-        <div class="img-city"><%= @citypictag%></div>
-        <div id="map"></div>
-      </div>
-      <%= render 'shared/subscribe' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("agenda", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
     </div>
-
-  <!-- MOBILE -->
-   <div class="col-xs-12 hidden-md hidden-lg mobile-info">
-      <div class="wrapper-mobile-lightheme">
-        <div class="img-avatar-mobile"><%= @avatarpictagmobile %></div>
-        <%= @markdown.html_safe %>
-      </div>
-
-      <div class="localisation-mobile">
-        <div class="img-city-mobile"><%= @citypictag%></div>
-        <div id="map-mobile"></div>
-      </div>
-      <%= render 'shared/subscribe' %>
+    <div class="col-xs-12 col-sm-2 agenda-separator">
+      <div class="agenda-hr"></div>
+    </div>
+    <div class="col-xs-12 col-sm-5 agenda-text">
+      <% if user_signed_in? && current_user.admin %>
+        <% article_typing("ventes", "vertical", "markdown2", "live-text2", "input2") %>
+        <% @markdown = @markdown2 %>
+        <div class="live-text">
+          <%= render 'shared/articletyping' %>
+        </div>
+      <% else %>
+        <div class="plain-text">
+          <% article_display("ventes", "vertical") %>
+          <%= @markdown.html_safe %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
 
-<% content_for(:after_js) do %>
-  <script>
-   $(document).ready(function() {
-      var handler1 = Gmaps.build('Google');
-      handler1.buildMap({internal: {id: 'map'}}, function(){
-        markers1 = handler1.addMarkers([
-          {
-            lat: <%= ENV['LAT'].to_f %>,
-            lng: <%= ENV['LNG'].to_f %>,
-            infowindow: "<%= "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>"
-          }
-        ]);
-        handler1.bounds.extendWith(markers1);
-        handler1.getMap().setCenter({lat: <%= ENV['LAT'].to_f %>, lng: <%= ENV['LNG'].to_f %>});
-        handler1.getMap().setZoom(6);
-      });
 
-      var handler = Gmaps.build('Google');
-      handler.buildMap({internal: {id: 'map-mobile'}}, function(){
-        marker = handler.addMarkers([
-          {
-            lat: <%= ENV['LAT'].to_f %>,
-            lng: <%= ENV['LNG'].to_f %>
-          }
-        ]);
-        handler.bounds.extendWith(marker);
-        handler.getMap().setCenter({lat: <%= ENV['LAT'].to_f %>, lng: <%= ENV['LNG'].to_f %>});
-        handler.getMap().setZoom(6);
-      });
-    });
-  </script>
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ArtGallery",
-      "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
-      "@id": "<%=request.original_url%>",
-      "name": "<%=t(:les_produits_de_machin, product:"#{ENV['MODEL']}", name: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}")%>",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "12 rue de la paix",
-        "addressLocality": "Paris",
-        "addressRegion": "IDF",
-        "postalCode": "75000",
-        "addressCountry": "FR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": <%= ENV['LAT'].to_f %>,
-        "longitude": <%= ENV['LAT'].to_f %>
-      },
-      "url": "<%=request.original_url%>",
-      "telephone": "<%= ENV['TELEPHONE']%>",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          "opens": "10:00",
-          "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Saturday","Sunday"],
-          "opens": "closed",
-          "closes": "closed"
-        }
-      ],
-     "priceRange":"20€ à 800€"
-    }
-  </script>
-<% end %>
+

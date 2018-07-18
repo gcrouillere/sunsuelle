@@ -1,0 +1,102 @@
+<% content_for(:description) do %>
+  <%= t(:info_description)%>
+<% end %>
+<% content_for(:title_tag) do %>
+  <%= t(:info_title)%>
+<% end %>
+
+<%= render 'shared/info_pics' %>
+
+<div class="container">
+  <div class="row">
+
+  <!-- LAPTOP -->
+    <div class="hidden-xs hidden-sm col-sm-12">
+      <div class="wrapper-lighttheme">
+        <%= photo_update('info1photo', 35, '', '', 15, '.info1photopic', "Mise à jour photo info 1")%>
+        <%= @info1pictag %>
+
+        <% if user_signed_in? && current_user.admin %>
+          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
+          <% @markdown = @markdown1 %>
+          <%= render 'shared/articletyping' %>
+        <% else %>
+          <div id="live-text">
+            <% article_display("info", "horizontal") %>
+            <%= @markdown.html_safe %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="wrapper-lighttheme second-wrapper">
+        <% if user_signed_in? && current_user.admin %>
+          <% article_typing("info-bottom", "horizontal", "markdown2", "live-text2", "input2") %>
+          <% @markdown = @markdown2 %>
+          <%= render 'shared/articletyping' %>
+        <% else %>
+          <div id="live-text">
+            <% article_display("info-bottom", "horizontal") %>
+            <%= @markdown.html_safe %>
+          </div>
+        <% end %>
+
+        <%= photo_update('info2photo', 35, 15, '', '', '.info2photopic', "Mise à jour photo info 2")%>
+        <%= @info2pictag %>
+      </div>
+    </div>
+
+  <!-- MOBILE -->
+   <div class="col-xs-12 hidden-md hidden-lg mobile-info">
+      <div class="wrapper-mobile-lightheme">
+        <div class="img-avatar-mobile"><%= @info1pictag %></div>
+        <%= @markdown.html_safe %>
+      </div>
+      <div class="wrapper-mobile-lightheme">
+        <div class="img-avatar-mobile"><%= @info2pictag %></div>
+        <%= @markdown.html_safe %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% content_for(:after_js) do %>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ArtGallery",
+      "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
+      "@id": "<%=request.original_url%>",
+      "name": "<%=t(:les_produits_de_machin, product:"#{ENV['MODEL']}", name: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}")%>",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "12 rue de la paix",
+        "addressLocality": "Paris",
+        "addressRegion": "IDF",
+        "postalCode": "75000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": <%= ENV['LAT'].to_f %>,
+        "longitude": <%= ENV['LAT'].to_f %>
+      },
+      "url": "<%=request.original_url%>",
+      "telephone": "<%= ENV['TELEPHONE']%>",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "closed",
+          "closes": "closed"
+        }
+      ],
+     "priceRange":"20€ à 800€"
+    }
+  </script>
+<% end %>

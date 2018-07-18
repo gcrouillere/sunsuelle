@@ -32,6 +32,7 @@
   }
   .left-block-temoignage {
     transform: skew(20deg);
+    background: linear-gradient(to left, #EBC05A, #E4554E);
     display: flex;
     min-width: 40%;
     justify-content: center;
@@ -43,6 +44,7 @@
     h2 {
       transform: skew(-20deg);
       padding: 20px;
+      color: white;
     }
   }
   .right-block-temoignage {
@@ -62,6 +64,7 @@
     content: "\201C";
     top: -17px;
     left: -30px;
+    color: #E4554E;
   }
   .right-block-temoignage:after {
     font-family: Georgia, serif;
@@ -71,6 +74,7 @@
     content: "\201D";
     right:-20px;
     bottom:-73px;
+    color: #E4554E;
   }
 }
 

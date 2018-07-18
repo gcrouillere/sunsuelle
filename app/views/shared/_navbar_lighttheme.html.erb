@@ -1,172 +1,152 @@
-<!-- Right Navigation LAPTOP -->
-<% opacity_addition = "" %>
-<% nav_bar_mobility = "nav-mobile" %>
-<% if  params[:controller] == "lessons" %>
-  <% opacity_addition = "opacity-on-laptop" %>
-  <% nav_bar_mobility = "nav-fixe" %>
-<% end %>
-<!-- Right Navigation LAPTOP -->
-<div class="navbar-laptop-lighttheme hidden-xs hidden-sm <%= opacity_addition %> nav-mobile">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
-    <%= render 'shared/logo_pic' %>
-    <%= @logositepictag %>
-  <% end %>
-
-  <!-- Different navigation if login or not -->
-  <% if user_signed_in? %>
-
-    <!-- Navbar right when connected -->
-    <div class="navbar-item">
-      <div class="nav-bar-list">
-        <%= link_to root_path do %>
-          <span><%=t(:home_page)%></span>
-        <% end %>
-        <%= link_to ceramiques_path do %>
-          <span><%=t(:shop_link)%></span>
-        <% end %>
-        <%= link_to info_path do %>
-          <span><%=t(:info_link)%></span>
-        <% end %>
-        <%= link_to articles_path do %>
-          <span><%=t(:blog_link)%></span>
-        <% end %>
-        <a href="#" id="lighttheme-filter-search"><%= image_tag "search.svg", class: "searchimg"%></a>
-        <%= link_to new_lesson_path do %>
-          <span><%=t(:lesson_link)%></span>
-        <% end %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
+<div class="navbar-laptop-lighttheme nav-mobile">
+<!-- Language - Contact - Sign-in - Cart -->
+  <div class="nav-top-section">
+    <div class="nav-top-left">
+      <div class="dropdown top-section-item">
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+            <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-langages">
+          <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
+                <%= image_tag "EN.svg", class: "flag"%>
               <% end %>
-            <% end %>
-          <% end %>
+          </li>
+          <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
+                <%= image_tag "FR.svg", class: "flag"%>
+              <% end %>
+          </li>
+        </ul>
+      </div>
+      <div class="icone-bloc top-section-item laptop-item">
+        <%= link_to contact_path, class: "nav-link top-nav-link" do %>
+          <i class="fas fa-phone"></i>
+          <span>06 00 00 00 00</span>
         <% end %>
-
-        <div class="dropdown">
-          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-              <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-langages">
-            <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "EN.svg", class: "flag"%>
-                <% end %>
-            </li>
-            <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "FR.svg", class: "flag"%>
-                <% end %>
-            </li>
-          </ul>
-        </div>
-
       </div>
     </div>
-
-  <% else %>
-    <div class="navbar-item">
-      <div class="nav-bar-list">
-        <%= link_to root_path do %>
-          <span><%=t(:home_page)%></span>
+    <div class="nav-top-right">
+      <% if user_signed_in? %>
+        <div class="icone-bloc top-section-item laptop-item">
+        <%= link_to destroy_user_session_path, class: "top-nav-link", method: :delete do %>
+          <i class="fa fa-sign-out-alt"></i>
+          <span class="info-text info-text-3"><%=t(:unconnect).upcase%></span>
         <% end %>
-        <%= link_to ceramiques_path do %>
-          <span><%=t(:shop_link)%></span>
-        <% end %>
-        <%= link_to info_path do %>
-          <span><%=t(:info_link)%></span>
-        <% end %>
-        <%= link_to articles_path do %>
-          <span><%=t(:blog_link)%></span>
-        <% end %>
-        <a href="#" id="lighttheme-filter-search"><%= image_tag "search.svg", class: "searchimg"%></a>
-        <%= link_to new_lesson_path do %>
-          <span><%=t(:lesson_link)%></span>
-        <% end %>
-        <% if session[:order].present? %>
-          <% if Order.where(id: session[:order]).present? %>
-            <% if Order.where(id: session[:order]).first.state != "lost" %>
-              <%= link_to order_path(Order.find(session[:order])) do %>
-                <span><%= image_tag "cart.svg", class: "lightcart"%></span>
-              <% end %>
-            <% end %>
-          <% end %>
-        <% end %>
-
-        <div class="dropdown">
-          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-              <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-langages">
-            <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "EN.svg", class: "flag"%>
-                <% end %>
-            </li>
-            <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "FR.svg", class: "flag"%>
-                <% end %>
-            </li>
-          </ul>
         </div>
-
-      </div>
-    </div>
-  <% end %>
-  </div>
-
-<!-- Right Navigation MOBILE -->
-<div class="navbar-mobile-lighttheme hidden-md hidden-lg">
- <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= render 'shared/logo_pic' %>
-    <%= @logositepictag %>
-  <% end %>
-
-  <div class="navbar-item">
-    <div class="list-mobile">
-      <%= link_to ceramiques_path do %>
-        <span><%=t(:shop_link_mobile)%></span>
+      <% else %>
+        <div class="icone-bloc top-section-item laptop-item">
+        <%= link_to new_user_session_path, class: "navbar-item navbar-link top-nav-link" do %>
+          <i class="fa fa-sign-in-alt"></i>
+          <span class="info-text info-text-3"><%=t(:connect).upcase%></span>
+        <% end %>
+        </div>
       <% end %>
-      <%= link_to info_path do %>
-        <%= image_tag "info.svg", class: "infoimg"%>
-      <% end %>
-      <%= link_to articles_path do %>
-        <%= image_tag "blog.svg", class: "blogimg"%>
-      <% end %>
-      <%= link_to new_lesson_path do %>
-        <span><%=t(:lesson_link_mobile)%></span>
-      <% end %>
-      <a href="#" id="lighttheme-filter-search-mobile"><%= image_tag "search.svg", class: "searchimg"%></a>
       <% if session[:order].present? %>
         <% if Order.where(id: session[:order]).present? %>
           <% if Order.where(id: session[:order]).first.state != "lost" %>
-            <%= link_to order_path(Order.find(session[:order])) do %>
+            <%= link_to order_path(Order.find(session[:order])), class: "top-section-item top-nav-link" do %>
               <span><%= image_tag "cart.svg", class: "lightcart"%></span>
             <% end %>
           <% end %>
         <% end %>
       <% end %>
+    </div>
+  </div>
+  <!-- Logo -->
+  <div class="navbar-logo">
+  <%= link_to root_path, class: "home-link", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+    <%= render 'shared/logo_pic' %>
+    <%= @logositepictag %>
+  <% end %>
+  </div>
+  <!-- Bottom Links -->
+  <div class="navbar-item">
+    <div class="nav-bar-list">
 
-        <div class="dropdown dropdown-mobile-navbar">
-          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
-              <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu dropdown-menu-langages">
-            <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "EN.svg", class: "flag"%>
-                <% end %>
-            </li>
-            <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
-                  <%= image_tag "FR.svg", class: "flag"%>
-                <% end %>
-            </li>
-          </ul>
+      <div class="shop-dropdown hidden-xs hidden-sm">
+        <%= link_to ceramiques_path, class: "nav-link nav-link-no-hover" do %>
+          <span ><%=t(:shop_link).upcase%></span>
+          <span class="caret"></span>
+        <% end %>
+        <div class="shop-sub-list">
+          <div class="nav-categories">
+            <% @uniq_categories.each do |category|%>
+             <%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %>
+            <% end %>
+          </div>
+          <div class="central-bar"><div class="vertical-bar"></div></div>
+          <div class="nav-themes">
+            <% @uniq_themes.each do |theme|%>
+             <%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %>
+            <% end %>
+          </div>
         </div>
+      </div>
+
+      <div class="shop-dropdown hidden-md hidden-lg">
+        <a class="nav-link">
+          <span ><%=t(:shop_link_mobile).upcase%></span>
+          <span class="caret"></span>
+        </a>
+        <div class="shop-sub-list-mobile">
+          <%= link_to ceramiques_path, class: "all-products-link" do %>
+            <span ><%=t(:all_products).upcase%></span>
+          <% end %>
+          <div class="categories-and-themes">
+            <div class="nav-categories">
+              <% @uniq_categories.each do |category|%>
+               <%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %>
+              <% end %>
+            </div>
+            <div class="central-bar"><div class="vertical-bar"></div></div>
+            <div class="nav-themes">
+              <% @uniq_themes.each do |theme|%>
+               <%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= link_to about_path, class: "nav-link hidden-xs hidden-sm" do %>
+        <span><%=t(:about).upcase%></span>
+      <% end %>
+      <%= link_to articles_path, class: "nav-link hidden-xs hidden-sm" do %>
+        <span><%=t(:blog_link).upcase%></span>
+      <% end %>
+      <%= link_to info_path, class: "nav-link hidden-xs hidden-sm" do %>
+        <span><%=t(:info_link).upcase%></span>
+      <% end %>
+      <%= link_to contact_path, class: "nav-link hidden-xs hidden-sm" do %>
+        <span><%=t(:contact).upcase%></span>
+      <% end %>
+      <a href="#" class="nav-link" id="lighttheme-filter-search">
+        <span class="hidden-md hidden-lg"><%= image_tag "search.svg", class: "searchimg"%></span>
+        <span class="hidden-xs hidden-sm">RECHERCHER</span>
+      </a>
+      <div class="shop-dropdown hidden-md hidden-lg">
+        <a href="#" class="nav-link">
+          <span><%=t(:info_link).upcase%></span>
+          <span class="caret"></span>
+        </a>
+        <div class="shop-sub-list-mobile">
+          <div class="nav-categories">
+            <%= link_to about_path, class: "nav-link" do %>
+              <span><%=t(:about).upcase%></span>
+            <% end %>
+            <%= link_to articles_path, class: "nav-link" do %>
+              <span><%=t(:blog_link).upcase%></span>
+            <% end %>
+            <%= link_to info_path, class: "nav-link" do %>
+              <span><%=t(:info_link).upcase%></span>
+            <% end %>
+            <%= link_to contact_path, class: "nav-link" do %>
+              <span><%=t(:contact).upcase%></span>
+            <% end %>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
-
 </div>

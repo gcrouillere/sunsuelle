@@ -6,7 +6,7 @@
   position: fixed;
   width: 100%;
   z-index: 5;
-  top: 70px;
+  top: 190px;
 }
 .navbar-mobile {
   position: fixed;
@@ -46,11 +46,8 @@
   justify-content: space-between;
     /* Navbar logo */
   .navbar-brand {
-    display: flex;
     padding: 0px;
     img {
-      display: flex;
-      flex: 1 0 auto;
       margin-left: 30px;
       height: 100%;
     }
@@ -59,12 +56,6 @@
 
   .fa-shopping-cart {
     font-size: 22px;
-  }
-
-  .lightcart {
-    width: 20px;
-    top: -1px;
-    position: relative;
   }
 
   .flag {
@@ -116,26 +107,6 @@
 
 /* Navbar right items */
 .navbar-item {
-  cursor: pointer;
-
-  /* laptop */
-  .nav-bar-list {
-    display: flex;
-    list-style: none;
-    a {
-        text-decoration: none !important;
-        color: black !important;
-        margin-right: 20px;
-        padding-bottom: 2px;
-         border-bottom: 1px solid transparent;
-      i {
-        color: black !important;
-      }
-    }
-    a:hover {
-      border-bottom: 1px solid black;
-    }
-  }
   /* mobile */
   .list-mobile {
     display: flex;
@@ -148,21 +119,6 @@
     span {
      font-size: 13px;
     }
-  }
-}
-
-.dropdown-menu.dropdown-menu-langages {
-  padding: 0;
-  min-width: 0px;
-  right: 12px;
-  left: unset;
-  a {
-    margin-right: 0px !important;
-    border-bottom: none;
-    padding: 2px 20px;
-  }
-  a:hover {
-    border-bottom: none;
   }
 }
 

@@ -38,11 +38,11 @@
     <div id="<%=@live_id || "live-text1"%>"><%= @markdown.html_safe %></div>
     <%= simple_form_for @article do |f| %>
       <%= f.error_notification %>
-      <% if params[:controller] == "articles" %>
+      <% if params[:controller] == "articles" && @article.name != "subscribe-text" %>
         <%= f.input :title %>
       <% end %>
       <%= f.input :content, :input_html => { :id => (@input_id || "input1") } %>
-      <% if params[:controller] == "articles" %>
+      <% if params[:controller] == "articles" && @article.name != "subscribe-text" %>
         <%= f.input :article_main_photo, as: :attachinary %>
       <% end %>
       <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>

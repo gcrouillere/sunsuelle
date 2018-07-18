@@ -29,9 +29,7 @@ module ApplicationHelper
   end
 
   def article_display(article_name, orientation)
-    unless params[:controller] == "articles" && params[:action] == "show"
-      @article = retrieve_article(article_name) || Article.new
-    end
+    @article = retrieve_article(article_name) || Article.new
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
     @markdown = @markdown.render(@article.content || "")
   end

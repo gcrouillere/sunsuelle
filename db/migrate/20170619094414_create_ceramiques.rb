@@ -4,7 +4,6 @@ class CreateCeramiques < ActiveRecord::Migration[5.0]
       t.string :name, null: false
       t.string :description, null: false
       t.integer :stock, null: false
-      t.references :category, foreign_key: true
 
       t.timestamps
     end

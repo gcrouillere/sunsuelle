@@ -1,7 +1,9 @@
 <% @avatarpictag = image_tag ENV['AVATAR'], class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
+<% @info2pictag = image_tag ENV['INFO2'], class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
+<% @info1pictag = image_tag ENV['INFO1'], class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
 <% @avatarpictagmobile = image_tag ENV['AVATAR'], alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"  %>
 <% @citypictag = image_tag ENV['CITY'], alt: "#{ENV['ADDRESS'].gsub(/[+]/, ' ')}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %>
-<%=  %>
+
 <% @citypicpath = image_path ENV['CITY'] %>
 <%=  %>
 <% if @admin %>
@@ -13,6 +15,23 @@
     <% end %>
     <% @avatarpictagmobile = cl_image_tag(cl_image_path @admin.avatarphoto.path, :width => 200, :height => 200, :crop => :thumb, :gravity => :face, alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}") %>
   <% end %>
+
+  <% if @admin.info1photo.present? %>
+    <% if @admin.info1photo.width.to_f / (@admin.info1photo.height) > 1.2 %>
+      <% @info1pictag = cl_image_tag @admin.info1photo.path, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
+    <% else %>
+      <% @info1pictag = cl_image_tag @admin.info1photo.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%>
+    <% end %>
+  <% end %>
+
+  <% if @admin.info2photo.present? %>
+    <% if @admin.info2photo.width.to_f / (@admin.info2photo.height) > 1.2 %>
+      <% @info2pictag = cl_image_tag @admin.info2photo.path, :width => 450, :height => 390, :crop => :thumb, :gravity => :face, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}" %>
+    <% else %>
+      <% @info2pictag = cl_image_tag @admin.info2photo.path, class: "img-avatar", alt: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} créateur de #{ENV['MODEL']}"%>
+    <% end %>
+  <% end %>
+
   <% if  @admin.cityphoto.present? %>
     <% @citypictag = cl_image_tag(cl_image_path @admin.cityphoto.path, alt: "#{ENV['ADDRESS'].gsub(/[+]/, ' ')}, localisation de l'atelier de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}") %>
       <% @citypicpath = @admin.cityphoto.path %>

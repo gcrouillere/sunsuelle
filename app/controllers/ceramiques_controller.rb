@@ -2,20 +2,19 @@ class CeramiquesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
-    @ceramiques = Ceramique.all
     Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
-    if params[:all].present?
-      @ceramiques
-    else
+    macro_filter
+    unless params[:all].present?
       filter_by_category if params[:categories].present?
+      filter_by_theme if params[:themes].present?
       filter_by_offer if params[:offer].present?
       filter_globally if params[:search].present?
       filter_by_price if params[:prix_max].present?
     end
-    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(updated_at: :desc)
+    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc)
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
     render "index_#{@active_theme.name}"
@@ -26,7 +25,7 @@ class CeramiquesController < ApplicationController
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
     clean_orders
     @ceramique = Ceramique.find(params[:id])
-    @same_category_products = @ceramique.category.ceramiques - [@ceramique]
+    @same_category_products = @ceramique.categories.map {|category| category.ceramiques }.flatten - [@ceramique]
     @twitter_url = request.original_url.to_query('url')
     render "show_#{@active_theme.name}"
   end
@@ -49,9 +48,26 @@ class CeramiquesController < ApplicationController
     end
   end
 
+  def macro_filter
+    if user_signed_in?
+      if current_user.admin
+        @ceramiques = Ceramique.all
+      else
+        @ceramiques = Ceramique.where(active: true)
+      end
+    else
+      @ceramiques = Ceramique.where(active: true)
+    end
+  end
+
   def filter_by_category
     categories = params[:categories].map {|category| "%#{category}%" }
-    @ceramiques = @ceramiques.joins(:category).merge(Category.i18n {name.matches_any(categories)})
+    @ceramiques = @ceramiques.joins(:categories).merge(Category.i18n {name.matches_any(categories)})
+  end
+
+  def filter_by_theme
+    themes = params[:themes].map {|theme| "%#{theme}%" }
+    @ceramiques = @ceramiques.joins(:product_themes).merge(ProductTheme.i18n {name.matches_any(themes)})
   end
 
   def filter_by_price

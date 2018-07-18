@@ -1,5 +1,5 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to t(:connect), new_session_path(resource_name), class: "devise-bottom-link" %><br />
+  <%= link_to t(:devise_connect), new_session_path(resource_name), class: "devise-bottom-link" %><br />
 <% end -%>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>

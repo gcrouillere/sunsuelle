@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_05_114940) do
+ActiveRecord::Schema.define(version: 2018_07_14_130326) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,14 @@ ActiveRecord::Schema.define(version: 2018_07_05_114940) do
     t.string "name"
     t.text "description"
     t.integer "stock", null: false
-    t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "price_cents", default: 0, null: false
     t.string "slug"
     t.integer "weight"
     t.integer "offer_id"
-    t.index ["category_id"], name: "index_ceramiques_on_category_id"
+    t.boolean "active"
+    t.integer "position"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end
 
@@ -180,6 +180,28 @@ ActiveRecord::Schema.define(version: 2018_07_05_114940) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "product_categories", force: :cascade do |t|
+    t.bigint "ceramique_id"
+    t.bigint "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_product_categories_on_category_id"
+    t.index ["ceramique_id"], name: "index_product_categories_on_ceramique_id"
+  end
+
+  create_table "product_theme_associations", force: :cascade do |t|
+    t.bigint "ceramique_id"
+    t.bigint "product_theme_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ceramique_id"], name: "index_product_theme_associations_on_ceramique_id"
+    t.index ["product_theme_id"], name: "index_product_theme_associations_on_product_theme_id"
+  end
+
+  create_table "product_themes", force: :cascade do |t|
+    t.string "name"
+  end
+
   create_table "promos", force: :cascade do |t|
     t.string "code"
     t.float "percentage"
@@ -237,10 +259,13 @@ ActiveRecord::Schema.define(version: 2018_07_05_114940) do
   add_foreign_key "basketlines", "ceramiques"
   add_foreign_key "basketlines", "orders"
   add_foreign_key "calendarupdates", "lessons"
-  add_foreign_key "ceramiques", "categories"
   add_foreign_key "ceramiques", "offers"
   add_foreign_key "lessons", "users"
   add_foreign_key "orders", "lessons"
   add_foreign_key "orders", "promos"
   add_foreign_key "orders", "users"
+  add_foreign_key "product_categories", "categories"
+  add_foreign_key "product_categories", "ceramiques"
+  add_foreign_key "product_theme_associations", "ceramiques"
+  add_foreign_key "product_theme_associations", "product_themes"
 end

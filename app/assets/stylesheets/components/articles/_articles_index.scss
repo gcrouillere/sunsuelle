@@ -7,6 +7,7 @@
     font-weight: 900;
     margin-left: 0px;
     margin-bottom: 50px;
+    margin-top: 50px;
     font-size: 60px;
     text-align: center;
     -webkit-text-fill-color: transparent;
@@ -16,7 +17,7 @@
   @media all and (max-width: 700px) {
     h1 {
       font-size: 37px;
-      margin: 22px 5px 50px 5px;
+      margin: 30px 5px 30px 5px;
     }
   }
 }
@@ -48,10 +49,10 @@
 }
 
 .index-article-card {
-  width: 100%;
+  width: 98%;
   min-height: 200px;
   border-radius: 0px;
-  margin-bottom: 40px;
+  margin: 40px auto 0px auto;
   box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   position: relative;
@@ -104,9 +105,16 @@
       color: black;
     }
   }
-  .index-article-card {
+  .index-article-card.article-impair {
    background: white;
-    border: 5px solid white;
+    border: 5px solid rgba(227,100,84, 0.7);
+  }
+  .index-article-card.article-pair {
+   background: white;
+    border: 5px solid rgba(234,185,97, 0.7);
+  }
+  .index-article-card.last-article {
+    margin-bottom: 40px;
   }
 }
 

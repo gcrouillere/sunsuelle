@@ -1,6 +1,6 @@
-class Category < ApplicationRecord
-  has_many :product_categories
-  has_many :ceramiques, through: :product_categories
+class ProductTheme < ApplicationRecord
+  has_many :product_theme_associations
+  has_many :ceramiques, through: :product_theme_associations
 
   extend Mobility
   translates :name, type: :string, fallbacks: { fr: :en, en: :fr }, locale_accessors: [:en, :fr]
