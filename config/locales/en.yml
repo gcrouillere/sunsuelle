@@ -146,6 +146,7 @@ en:
   send_your_message: "Type your message here"
   send: "SEND"
   about: "About"
+  continue_shopping: "Continue shopping"
   activerecord:
     errors:
       messages:

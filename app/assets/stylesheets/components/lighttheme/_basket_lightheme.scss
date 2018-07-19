@@ -81,6 +81,11 @@
     text-align: right;
     font-weight: 300;
   }
+  .continue-shopping {
+    display: block;
+    width: 89%;
+    margin: 15px auto;
+  }
   .total_amount {
     margin-bottom: 40px;
     margin-top: 4px;
@@ -167,6 +172,12 @@
   margin: 0 auto;
   width: 83%;
   .input-label-take-away {
-    display: block;
+    display: flex;
+  }
+  .btn.btn-primary {
+    width: 100%;
+  }
+  .continue-shopping {
+    margin: 15px auto;
   }
 }
