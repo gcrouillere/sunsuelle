@@ -148,7 +148,7 @@ en:
   send: "SEND"
   about: "About"
   continue_shopping: "Continue shopping"
-  latest_product: "New products"
+  latest_products: "New products"
   activerecord:
     errors:
       messages:

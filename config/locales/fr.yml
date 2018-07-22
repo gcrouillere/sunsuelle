@@ -144,7 +144,7 @@ fr:
   about: "A propos"
   send: "ENVOYER"
   continue_shopping: "Continuer le shopping"
-  latest_product: "Les dernières créations"
+  latest_products: "Les dernières créations"
   day:
     one: "Jour"
     other: "Jours"
