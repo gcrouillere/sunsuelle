@@ -67,6 +67,7 @@ fr:
   display: "AFFICHER"
   display_mobile: "AFFICHER LES PRODUITS"
   search_place_holder: "Que recherchez-vous ?"
+  search: "RECHERCHER"
   display_all: "Tout afficher"
   les_produits_de_machin: "Les %{product} de %{name}"
   same_category_products: "Retrouvez d'autres produits dans la même catégorie : "
@@ -143,6 +144,7 @@ fr:
   about: "A propos"
   send: "ENVOYER"
   continue_shopping: "Continuer le shopping"
+  latest_product: "Les dernières créations"
   day:
     one: "Jour"
     other: "Jours"

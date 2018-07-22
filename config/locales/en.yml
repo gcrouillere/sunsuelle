@@ -69,6 +69,7 @@ en:
   display_mobile: "DISPLAY THE PRODUCTS"
   display_all: "Display all"
   search_place_holder: "Looking for something ?"
+  search: "SEARCH"
   les_produits_de_machin: "%{name}'s %{product}"
   same_category_products: "Discover other products in the same category:"
   name: "%{name}"
@@ -147,6 +148,7 @@ en:
   send: "SEND"
   about: "About"
   continue_shopping: "Continue shopping"
+  latest_product: "New products"
   activerecord:
     errors:
       messages:
