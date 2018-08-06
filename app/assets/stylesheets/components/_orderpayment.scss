@@ -42,17 +42,21 @@
       width: 60%;
       border-radius: 1px;
       padding: 6px 12px;
-      color: white;
       font-size: 14px;
-      border: 1px solid darken($primary, 10%);
-      background-color: $primary;
-      transition: 0.1s background-color linear, 0.1s color linear;
       margin: auto;
+      color: white;
+      border: 1px solid #E4554E;
+      background-color: rgba(228, 85, 78, 0.9);
+      box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+      transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
     }
 
     .laptop-link-coord:hover {
-      background-color: darken($primary, 10%);
-      transition: 0.1s background-color linear, 0.1s color linear;
+      background-color: rgba(249, 205, 99, 0.9);
+      border: 1px solid #f9cd63;
+      box-shadow: 3px 3px rgba(228, 85, 78, 0.9);
+      color: white;
+      transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
     }
   }
 }
@@ -70,6 +74,7 @@ h3.payment-choice {
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
   .paypal {
+    margin: 0px 20px 0px 20px;
     width: 266px;
     height: 143px;
     .paypal-logo {

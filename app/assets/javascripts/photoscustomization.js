@@ -91,4 +91,11 @@ $(document).ready(function() {
     $('.info2photopic .photo-button').removeClass('hidden');
   });
 
+  $('.info1photopic .attachinary_container').on('click', function(e){
+    $('.info1photopic .photo-button').removeClass('hidden');
+  });
+  $('.info1photopic input').on('click', function(e){
+    $('.info1photopic .photo-button').removeClass('hidden');
+  });
+
 });

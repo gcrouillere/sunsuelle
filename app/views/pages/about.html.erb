@@ -49,10 +49,12 @@
    <div class="col-xs-12 hidden-md hidden-lg mobile-info">
       <div class="wrapper-mobile-lightheme">
         <div class="img-avatar-mobile"><%= @info1pictag %></div>
+        <% article_display("info", "horizontal") %>
         <%= @markdown.html_safe %>
       </div>
       <div class="wrapper-mobile-lightheme">
         <div class="img-avatar-mobile"><%= @info2pictag %></div>
+        <% article_display("info-bottom", "horizontal") %>
         <%= @markdown.html_safe %>
       </div>
     </div>

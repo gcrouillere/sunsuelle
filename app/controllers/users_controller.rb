@@ -12,21 +12,19 @@ class UsersController < ApplicationController
   end
 
   def subscribe
-    unless session[:email]
-      if Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z').match(params[:user][:email]) && params[:user][:first_name] != "" && params[:user][:tracking] != ""
-        @user = User.user_subscribe(user_params)
-        if request.referrer.match("contact")
-          SubscribeMailer.web_message(@user, @admin).deliver_now
-        else
-          SubscribeMailer.subscribe(@user, @admin).deliver_now
-        end
-        session[:email] = params[:user][:email]
-        flash[:notice] = t(:message_thank)
-        redirect_to request.referrer
+    if Regexp.new('\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]{2,}\z').match(params[:user][:email]) && params[:user][:first_name] != "" && params[:user][:tracking] != ""
+      @user = User.user_subscribe(user_params)
+      if request.referrer.match("contact")
+        SubscribeMailer.web_message(@user, @admin).deliver_now
       else
-        flash[:alert] = t(:incorrect_fields)
-        redirect_to request.referrer
+        SubscribeMailer.subscribe(@user, @admin).deliver_now
       end
+      session[:email] = params[:user][:email]
+      flash[:notice] = t(:message_thank)
+      redirect_to request.referrer
+    else
+      flash[:alert] = t(:incorrect_fields)
+      redirect_to request.referrer
     end
   end
 
