@@ -5,6 +5,7 @@
   border-width: 8px;
   border-style: solid;
   border-top: 0px;
+  background: linear-gradient(to right, #f9cd63, #E4554E);
   .footer-bottom-section {
     position: relative;
     display: flex;
@@ -15,10 +16,12 @@
     h3 {
       font-size: 18px;
       font-weight: 400;
+      color: white;
     }
     h4, span {
       font-size: 14px;
       font-weight: 300;
+      color: white;
     }
     .connect, .CGV {
       margin: 20px 20px 0px 20px;
@@ -30,10 +33,7 @@
     }
   }
   a {
-    color: black;
-  }
-  a:hover {
-    color: #757575;
+    color: white;
   }
   .link-guillaume {
     position: absolute;
@@ -45,6 +45,7 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
+    color: white;
     .cards {
       display: flex;
       justify-content: center;
@@ -55,9 +56,14 @@
     }
     .footer-middle-box {
       margin: 0 50px;
+      text-align: center;
       h4 {
         text-align: center;
         font-size: 18px;
+      }
+      span {
+        margin: 22px 0 10px 0;
+        display: block;
       }
     }
     .last-box-first-p {
@@ -76,11 +82,13 @@
       width: max-content;
     }
     .colissimo {
-      width: 93px;
+      width: 26px;
       height: auto;
       margin: 0 auto;
-      display: block;
     }
+  }
+  .footer-top-section {
+    color: white;
   }
 }
 

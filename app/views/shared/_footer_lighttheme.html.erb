@@ -12,7 +12,7 @@
       </div>
       <div class="footer-middle-box">
         <h4><%=t(:shipping)%></h4>
-        <%= image_tag "colissimo.png", class: "colissimo"%>
+        <span><%= image_tag "cube-colissimo.png", class: "colissimo"%> Colissimo</span>
         <p><%= t(:int_shipping)%></p>
       </div>
       <div class="footer-middle-box">
@@ -66,6 +66,21 @@
               <% end %>
             <% end %>
           </div>
+        </div>
+        <div class="connect">
+          <h3>SITE</h3>
+          <%= link_to about_path do %>
+            <h4><%=t(:about)%></h4>
+          <% end %>
+          <%= link_to articles_path do %>
+            <h4><%=t(:blog_link)%></h4>
+          <% end %>
+          <%= link_to info_path do %>
+            <h4><%=t(:info_link)%></h4>
+          <% end %>
+          <%= link_to contact_path do %>
+            <h4><%=t(:contact)%></h4>
+          <% end %>
         </div>
       </div>
       <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere", class: "link-guillaume" do %>
