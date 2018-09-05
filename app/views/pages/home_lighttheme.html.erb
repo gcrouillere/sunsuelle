@@ -18,7 +18,7 @@
       <%= cl_image_tag @homepicpath, class: "hidden-xs" %>
       <%= cl_image_tag @homepicpathmobile, class: "hidden-sm hidden-md hidden-lg" %>
     </div>
-    <% if @promophoto && @front_offer %>
+    <% if @promophoto %>
       <div class="promo-frame">
         <%= link_to ceramiques_path(offer: true) do %>
           <%= cl_image_tag @promophoto %>
