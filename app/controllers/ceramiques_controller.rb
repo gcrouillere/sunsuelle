@@ -13,7 +13,7 @@ class CeramiquesController < ApplicationController
       filter_globally if params[:search].present?
       filter_by_price if params[:prix_max].present?
     end
-    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc)
+    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id), active: true).order(position: :asc).order(updated_at: :desc)
     @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
@@ -25,7 +25,7 @@ class CeramiquesController < ApplicationController
     @dev_redirection = "https://www.creermonecommerce.fr/produits"
     clean_orders
     @ceramique = Ceramique.find(params[:id])
-    @same_category_products = @ceramique.categories.map {|category| category.ceramiques }.flatten - [@ceramique]
+    @same_category_products = Ceramique.where(active: true).where.not(id: @ceramique.id).joins(:categories).where(categories: @ceramique.categories.map(&:id)).uniq
     @twitter_url = request.original_url.to_query('url')
     render "show_#{@active_theme.name}"
   end

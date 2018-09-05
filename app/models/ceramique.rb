@@ -17,9 +17,9 @@ class Ceramique < ApplicationRecord
   end
 
   has_many :product_categories
-  has_many :categories, through: :product_categories
+  has_many :categories, through: :product_categories, dependent: :destroy
   has_many :product_theme_associations
-  has_many :product_themes, through: :product_theme_associations
+  has_many :product_themes, through: :product_theme_associations, dependent: :destroy
   belongs_to :offer, required: false
   has_attachments :photos, maximum: 4, dependent: :destroy
   has_many :basketlines, dependent: :destroy

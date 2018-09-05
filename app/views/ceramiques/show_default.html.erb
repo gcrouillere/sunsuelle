@@ -93,7 +93,7 @@
           <h2><%= t(:same_category_products)%></h2>
           <div class="same-category-products-cards">
             <% @same_category_products.each_with_index do |ceramique, index|%>
-              <% if index == 0 || (index)%3 == 0 %>
+              <% if index == 0 || (index) % 3 == 0 %>
                 <div class="card-separator">
               <% end %>
                 <div class="col-sm-4 same-category-product-card">
