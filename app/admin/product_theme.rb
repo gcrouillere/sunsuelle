@@ -32,7 +32,7 @@ ActiveAdmin.register ProductTheme do
         redirect_to admin_product_themes_path and return
       end
       super do |format|
-        redirect_to admin_product_themes_path and return if resource.valid?
+        redirect_to admin_product_themes_path and return
       end
     end
 
