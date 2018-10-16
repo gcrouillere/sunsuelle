@@ -43,7 +43,7 @@
   }
   .footer-middle-section {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     margin-top: 30px;
     color: white;
     .cards {
@@ -55,7 +55,7 @@
       }
     }
     .footer-middle-box {
-      margin: 0 50px;
+      margin: 0;
       text-align: center;
       h4 {
         text-align: center;

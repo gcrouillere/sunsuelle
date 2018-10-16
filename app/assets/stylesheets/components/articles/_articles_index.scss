@@ -14,7 +14,7 @@
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
   }
-  @media all and (max-width: 700px) {
+  @media all and (max-width: 768px) {
     h1 {
       font-size: 37px;
       margin: 30px 5px 30px 5px;
@@ -84,7 +84,7 @@
   }
 }
 
-@media all and (max-width: 700px) {
+@media all and (max-width: 768px) {
   .index-article-card {
     width: 90%;
     margin: 40px auto 0px auto;
