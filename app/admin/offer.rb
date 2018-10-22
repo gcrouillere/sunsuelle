@@ -6,10 +6,6 @@ ActiveAdmin.register Offer, as: 'Offres' do
 
   index do
     column :title
-    column :description
-    column "En première page ?" do |offer|
-      offer.showcased
-    end
     column "Discount" do |offer|
       (offer.discount * 100).to_i.to_s + " %"
     end
@@ -19,8 +15,6 @@ ActiveAdmin.register Offer, as: 'Offres' do
   show do
     attributes_table do
       row :title
-      row :description
-      row :showcased
       row :discount
       row "Produits contenus dans l'offre" do |offer|
         Ceramique.all.where(offer: offer).map {|ceramique| ceramique.name}.join(", ")
@@ -31,8 +25,6 @@ ActiveAdmin.register Offer, as: 'Offres' do
   form do |f|
     f.inputs "" do
       f.input :title
-      f.input :description
-      f.input :showcased
       f.input :discount, :hint => "Nombre à virgule entre 0 et 1. Correspond à une réduction de 0 à 100%."
       f.input :ceramiques, as: :check_boxes,  :label => "Produits", :hint => "Sélectionnez les produits auxquels l'offre s'applique. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
     end
