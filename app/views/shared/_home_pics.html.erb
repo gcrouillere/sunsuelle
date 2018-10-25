@@ -2,12 +2,12 @@
 <% @homepicpathmobile = image_path ENV['HOMEPICMOBILE'] %>
 <% if @admin %>
   <% if  @admin.productphoto.present? %>
-    <% @homepicpath = cl_image_path @admin.productphoto.path %>
+    <% @homepicpath = cl_image_path @admin.productphoto.path, quality: "60" %>
   <% end %>
   <% if  @admin.productphotomobile.present? %>
-    <% @homepicpathmobile = cl_image_path @admin.productphotomobile.path %>
+    <% @homepicpathmobile = cl_image_path @admin.productphotomobile.path, quality: "60" %>
   <% end %>
   <% if  @admin.promophoto.present? %>
-    <% @promophoto = cl_image_path @admin.promophoto.path %>
+    <% @promophoto = cl_image_path @admin.promophoto.path, quality: "60" %>
   <% end %>
 <% end %>
