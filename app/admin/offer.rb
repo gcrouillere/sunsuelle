@@ -31,7 +31,7 @@ ActiveAdmin.register Offer, as: 'Offres' do
       f.input :title
       f.input :showcased
       f.input :discount, :hint => "Nombre à virgule entre 0 et 1. Correspond à une réduction de 0 à 100%."
-      f.input :ceramiques, as: :check_boxes,  :label => "Produits", :hint => "Sélectionnez les produits auxquels l'offre s'applique. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
+      f.input :ceramiques, as: :check_boxes,  :label => "Produits", :hint => "Sélectionnez les produits auxquels l'offre s'applique."
     end
     f.actions
   end
