@@ -227,7 +227,7 @@ fr:
       offer:
         title: "Titre"
         description: "Description"
-        showcased: "En première page ?"
+        showcased: "Offre de la page d'accueil ?"
       order:
         state: "Statut"
         ceramique: "Produits"

@@ -214,7 +214,7 @@ en:
       offer:
         title: "Title"
         description: "Description"
-        showcased: "On first page ?"
+        showcased: "Homepage's  offer ?"
       order:
         state: "Status"
         ceramique: "Products"

@@ -51,3 +51,5 @@
 <% end %>
 
 <h3>Facture règlée le <%= resource.updated_at.strftime("%d/%m/%Y") %> par carte bancaire, sur le site <%= ENV['APPNAME'] %>.</h3>
+
+<h3>Référence de la facture : <%= resource.id%></h3>
