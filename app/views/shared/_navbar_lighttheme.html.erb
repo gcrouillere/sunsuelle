@@ -54,7 +54,7 @@
   </div>
   <!-- Logo -->
   <div class="navbar-logo">
-  <%= link_to root_path, class: "home-link", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+  <%= link_to root_path, class: "home-link", title: "Retour à l'accueil de la boutique Sunsuelle" do %>
     <%= render 'shared/logo_pic' %>
     <%= @logositepictag %>
   <% end %>
@@ -69,16 +69,21 @@
           <span class="caret"></span>
         <% end %>
         <div class="shop-sub-list">
-          <div class="nav-categories">
-            <% @uniq_categories.each do |category|%>
-             <%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %>
-            <% end %>
-          </div>
-          <div class="central-bar"><div class="vertical-bar"></div></div>
-          <div class="nav-themes">
-            <% @uniq_themes.each do |theme|%>
-             <%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %>
-            <% end %>
+          <%= link_to ceramiques_path, class: "all-products-link" do %>
+            <span ><%=t(:all_products).upcase%></span>
+          <% end %>
+          <div class="categories-and-themes">
+            <div class="nav-categories">
+              <% @uniq_categories.each do |category|%>
+               <%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %>
+              <% end %>
+            </div>
+            <div class="central-bar"><div class="vertical-bar"></div></div>
+            <div class="nav-themes">
+              <% @uniq_themes.each do |theme|%>
+               <%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>

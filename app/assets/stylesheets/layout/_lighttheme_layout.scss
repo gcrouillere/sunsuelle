@@ -5,7 +5,7 @@
   }
 }
 
-.plain-text, .live-text {
+.plain-text, .live-text, .article-content, .article-edit {
   ul {
     list-style-type: none;
     list-style-position: inside;
@@ -14,8 +14,11 @@
   ul li:before {
     content: '\2014';
     position: absolute;
-    margin-left: -20px;
+    margin-left: -25px;
   }
+}
+
+.plain-text, .live-text {
   li {
     font-weight: 100;
   }

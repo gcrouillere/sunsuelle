@@ -8,7 +8,7 @@
     }
     p {
       text-align: justify;
-      font-size: 21px;
+      font-size: 18px;
     }
     p:last-child {
       margin-bottom: 50px;
@@ -87,7 +87,7 @@
     }
     p {
       text-align: justify;
-      font-size: 21px;
+      font-size: 18px;
       img {
         display: block;
         margin: 0 auto;
@@ -97,6 +97,15 @@
     p:last-child {
       margin-bottom: 50px;
     }
+    li {
+      font-size: 18px;
+    }
+  }
+}
+
+.article-content, .article-edit {
+  p, ul {
+    margin-bottom: 20px;
   }
 }
 
@@ -110,10 +119,8 @@
   margin-top: 30px;
 }
 
-@media all and (max-width: 700px) {
-  .commentsbloc {
-    padding: 0 10px;
-  }
+.commentsbloc {
+  padding: 0 10px;
 }
 
 .body-lighttheme {
