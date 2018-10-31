@@ -8,13 +8,13 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-langages">
-          <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
-                <%= image_tag "EN.svg", class: "flag"%>
-              <% end %>
+          <li><%= link_to "#{ENV['ENG_URL']}#{request.env['PATH_INFO']}" do %>
+              <%= image_tag "EN.svg", class: "flag"%>
+            <% end %>
           </li>
-          <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
-                <%= image_tag "FR.svg", class: "flag"%>
-              <% end %>
+          <li><%= link_to "#{ENV['FR_URL']}#{request.env['PATH_INFO']}" do %>
+              <%= image_tag "FR.svg", class: "flag"%>
+            <% end %>
           </li>
         </ul>
       </div>
