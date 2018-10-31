@@ -20,7 +20,7 @@
         <p class="last-box-first-p hidden-xs hidden-sm"><%=t(:customer_service_hours)%></p>
         <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_1)%></p>
         <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_2)%></p>
-        <p class="last-box-last-p"><%= ENV['TELEPHONE'] %></p>
+        <p class="last-box-last-p"><%= I18n.locale.to_s == "fr" ? "06 50 81 42 97" : "+33 6 50 81 42 97"%></p>
       </div>
     </div>
     <div class="footer-bottom-section">

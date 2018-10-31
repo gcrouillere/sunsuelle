@@ -15,11 +15,12 @@
     <%= photo_update('logophoto', 30, '', '', 785, '.logopic', "Mise à jour logo")%>
     <%= photo_update('promophoto', 300, '', '', 30, '.promophoto', "Mise à jour photo promotion")%>
     <div class="imagehomeleft">
-      <%= cl_image_tag @homepicpath, class: "hidden-xs" %>
-      <%= cl_image_tag @homepicpathmobile, class: "hidden-sm hidden-md hidden-lg" %>
+      <%= cl_image_tag @homepicpath, class: "hidden-xs front-image" %>
+      <%= cl_image_tag @homepicpathmobile, class: "hidden-sm hidden-md hidden-lg front-image" %>
     </div>
     <% if @promophoto %>
       <div class="promo-frame">
+        <span class="latest-products"><%= t(:latest_offer)%></span>
         <%= link_to ceramiques_path(offer: true) do %>
           <%= cl_image_tag @promophoto %>
         <% end %>
@@ -27,7 +28,7 @@
     <% end %>
     <div class="ceramiques-in-home">
       <span class="latest-products"><%= t(:latest_products)%></span>
-      <%= render  'shared/ceramique_cards_lighttheme'%>
+      <%= render  'shared/ceramique_cards_lighttheme_homepage'%>
     </div>
   </div>
 

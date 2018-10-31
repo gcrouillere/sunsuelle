@@ -3,8 +3,10 @@
   <%= simple_form_for (@order.user || User.new) do |f| %>
     <% if @order.user %>
       <%= f.input :country, label: false, selected: @order.user.country %>
-    <% else %>
+    <% elsif I18n.locale.to_s == "fr" %>
       <%= f.input :country, label: false, selected: "FR" %>
+    <% else %>
+      <%= f.input :country, label: false, selected: "US" %>
     <% end %>
   <% end %>
   <h5 class="port port-cost"> : <%= humanized_money(@port) %> <%= currency_symbol %></h5>

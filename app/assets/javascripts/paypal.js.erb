@@ -1,15 +1,15 @@
 $(document).ready(function() {
   if ($('#paypal-button').length > 0) {
     paypal.Button.render({
-      env: 'sandbox', // Or 'production',
+      env: 'production', // Or 'sandbox',
       commit: true, // Show a 'Pay Now' button
       style: {
         color: 'gold',
         size: 'small',
       },
       client: {
-          sandbox: 'AakDxTRwWNs6hgYspTUuVfXAnlmtyf1-Ps5BIlEzbto0zUEl0pYHSx1o4C-zgIh40NkB9IZ3sCk7HqMH',
-          production: 'AcWqebZe2tAD4EzrTGPh3M_k4_MtFnuFq084tAYJUXBNUNwtZ7L7uG8mHaYrgH8ugwqXwEZzx7X9hLc0'
+          sandbox: 'AYS24W9XOeCbo0-rpDRFEl41V_BCpIfrUzZv5NGchUzqoFzxyhN7vuaA-Sbt_E08Lbq3qX9p0x73fe1R',
+          production: 'AXLW4ysuCzHPLei3Trse7h4ppzbgca7PYm2Opw3FasLTlW_3HiFVuWaUo73YwjN4VGPQCWAfHesXf5S3'
       },
 
       payment: function(data, actions) {

@@ -1,3 +1,15 @@
+.ceramiques-in-home {
+  .img-container {
+    height: 600px !important;
+    @media all and (max-width: 768px) {
+      height: 300px !important;
+    }
+    @media all and (max-width: 500px) {
+      height: 200px !important;
+    }
+  }
+}
+
 .lighttheme-ceramiquecard-col {
   margin: 0px 0px 55px 0px;
   padding: 0px 10px;

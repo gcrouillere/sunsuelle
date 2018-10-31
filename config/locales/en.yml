@@ -38,7 +38,7 @@ en:
   save: "Save"
   new_lesson_description: "Blala to update."
   contact_description: "Check out Sunsuelles's contact information"
-  blog_main_title: "The fruit of our reflections"
+  blog_main_title: "Discussions"
   blog_index_description: "Discover %{name}'s articles"
   new_lesson_title: "Book a course"
   home_description: "All Sunsuelle's purses are unique and handmade in France. Discover all these creations in the shop."
@@ -95,9 +95,9 @@ en:
   shipping: "Shipping"
   int_shipping: "Worldwide shipping"
   customer_service: "Customer service"
-  customer_service_hours: "Monday to Friday, 9:30am 1pm - 2pm 5:30pm GMT+1"
+  customer_service_hours: "Monday to Friday, 10am to 19pm GMT+1"
   customer_service_hours_mobile_1: "Monday to Friday"
-  customer_service_hours_mobile_2: "9:30am 1pm - 2pm 5:30pm GMT+1"
+  customer_service_hours_mobile_2: "10am to 19pm GMT+1"
   our_products: "OUR PRODUCTS"
   our_collections: "OUR COLLECTIONS"
   collection: "Lists"
@@ -151,6 +151,7 @@ en:
   about: "About"
   continue_shopping: "Continue shopping"
   latest_products: "Moment's favorites"
+  latest_offer: "Moment's offer"
   activerecord:
     errors:
       messages:

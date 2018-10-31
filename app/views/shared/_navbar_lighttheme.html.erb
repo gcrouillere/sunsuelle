@@ -21,7 +21,7 @@
       <div class="icone-bloc top-section-item laptop-item">
         <%= link_to contact_path, class: "nav-link top-nav-link" do %>
           <i class="fas fa-phone"></i>
-          <span>06 00 00 00 00</span>
+          <span><%= I18n.locale.to_s == "fr" ? "06 50 81 42 97" : "+33 6 50 81 42 97"%></span>
         <% end %>
       </div>
     </div>

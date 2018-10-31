@@ -164,13 +164,16 @@
   display: block;
   float: right;
   text-align: center;
+  .btn.btn-primary {
+    width: 100%;
+  }
 }
 
 .pay-form-lighttheme-mobil.payment-form {
   display: block;
   text-align: center;
   margin: 0 auto;
-  width: 83%;
+  width: 100%;
   .input-label-take-away {
     display: flex;
   }
