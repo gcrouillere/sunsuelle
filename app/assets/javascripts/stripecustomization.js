@@ -1,3 +1,7 @@
 $(document).ready(function() {
-  $('.stripe-button-el span').text("Payer par carte");
+  if ($('.stripe-button.active')) {
+    if ($('.stripe-button.active').attr("data-locale") == "fr") {
+      $('.stripe-button-el span').text("Payer par carte");
+    }
+  }
 });
