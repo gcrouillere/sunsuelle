@@ -18,7 +18,7 @@
                     <% end %>
                   </style>
                   <% if  ceramique.stock == 0%>
-                    <div class="ceramiques-card-circle soldout"><p>Epuisé</p></div>
+                    <div class="ceramiques-card-circle soldout"><p>Indisponible</p></div>
                   <% elsif ceramique.offer%>
                     <% if ceramique.offer.discount > 0 %>
                       <div class="ceramiques-card-circle discount-circle"><p>-<%= (ceramique.offer.discount * 100).to_i %>%</p></div>

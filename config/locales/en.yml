@@ -66,7 +66,7 @@ en:
   qte: "Qty"
   hello: "Hello"
   add_to_basket: "Add to basket"
-  out_of_stock: "Out of stock"
+  out_of_stock: "Currentlu unavailable"
   no_product: "Sorry, no product matches your search"
   all_products: "ALL PRODUCTS"
   display: "DISPLAY"
@@ -152,8 +152,8 @@ en:
   send: "SEND"
   about: "About"
   continue_shopping: "Continue shopping"
-  latest_products: "Moment's favorites"
-  latest_offer: "Moment's offer"
+  latest_products: "Your favourites"
+  latest_offer: "Welcome giveaway"
   activerecord:
     errors:
       messages:

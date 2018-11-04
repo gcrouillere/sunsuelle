@@ -95,7 +95,7 @@
                       }
                     </style>
                     <% if  ceramique.stock == 0%>
-                      <div class="ceramiques-card-circle soldout default-circle"><p>Epuisé</p></div>
+                      <div class="ceramiques-card-circle soldout default-circle"><p>Indisponible</p></div>
                     <% end %>
                     <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
                     <h2 class="prix-index hidden-xs hidden-sm"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
