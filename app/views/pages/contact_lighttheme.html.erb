@@ -1,11 +1,14 @@
+<%= render 'shared/info_pics' %>
+
 <% content_for(:description) do %>
   <%=t(:contact_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
   <%=t(:contact_title)%>
 <% end %>
-
-<%= render 'shared/info_pics' %>
+<% content_for(:meta_image) do %>
+  <%= @avatarpicpath %>
+<% end %>
 
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">

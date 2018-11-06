@@ -1,11 +1,14 @@
+<%= render 'shared/info_pics' %>
+
 <% content_for(:description) do %>
   <%= t(:about_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
   <%= t(:about_title)%>
 <% end %>
-
-<%= render 'shared/info_pics' %>
+<% content_for(:meta_image) do %>
+  <%= @info1picpath %>
+<% end %>
 
 <div class="container">
   <div class="row">
