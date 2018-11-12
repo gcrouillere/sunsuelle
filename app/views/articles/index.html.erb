@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  <%= t(:blog_index_description, name: "#{ENV['FIRSTNAME'].upcase} #{ENV['LASTNAME'].upcase}") %>
+  <%= t(:blog_index_description) %>
 <% end %>
 <% content_for(:title_tag) do %>
-  <%= t(:blog_main_title, name: "#{ENV['FIRSTNAME'].upcase} #{ENV['LASTNAME'].upcase}")%>.
+  <%= t(:blog_main_title)%>
 <% end %>
 
 <div class="container articles-index">
@@ -14,7 +14,7 @@
           <span><i class="fas fa-plus"></i> Ajouter un article</span>
         <% end %>
       <% else %>
-        <h1><%= t(:blog_main_title, name: "#{ENV['APPNAME'].upcase}")%></h1>
+        <h1><%= t(:blog_main_title)%></h1>
       <% end %>
 
       <% @articles.each_with_index do |article, index| %>

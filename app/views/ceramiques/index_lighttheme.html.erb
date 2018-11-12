@@ -27,7 +27,7 @@
   {
     "@context": "http://schema.org/",
     "@type": "Product",
-    "name": "<%=t(:les_produits_de_machin, product:"#{ENV['MODEL']}", name: "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}")%>",
+    "name": "Sunsuelle",
     "image": <%= raw @ceramiques.map {|ceramique| cl_image_path ceramique.photos[0].path}.to_json %>,
     "brand": {
       "@type": "Thing",

@@ -20,13 +20,14 @@ ActiveAdmin.register Promo do
 
   controller do
 
-   def create
+    def create
       super do |format|
         redirect_to admin_promos_path and return if resource.valid?
       end
     end
 
     def destroy
+      Order.where(promo_id: params[:id]).update_all(promo_id: nil)
       super do |format|
         redirect_to admin_promos_path and return
       end
