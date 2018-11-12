@@ -83,15 +83,15 @@
     padding: 18px 29px;
     font-size: 12px;
     color: white;
-    background-color: #ff5c39;
-    border: 1px solid #653819;
-    box-shadow: 3px 3px #653819;
+    border: 1px solid #7c2529;
+    background-color: rgba(200, 16, 46, 0.9);
+    box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
   .subscribe-submit:hover {
-    background-color: #653819;
-    border: 1px solid #ff5c39;
-    box-shadow: 3px 3px #ff5c39;
+    background-color: rgba(249, 205, 99, 0.9);
+    border: 1px solid #c8102e;
+    box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
     color: white;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }

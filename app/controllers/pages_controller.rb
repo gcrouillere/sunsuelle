@@ -18,7 +18,7 @@ class PagesController < ApplicationController
   end
 
   def about
-    @dev_redirection = "https://www.creermonecommerce.fr"
+    @dev_redirection = "https://www.creermonecommerce.fr/realisations"
   end
 
   def contact

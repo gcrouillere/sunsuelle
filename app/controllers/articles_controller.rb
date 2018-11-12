@@ -7,6 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where("name LIKE ?", "%article%").order(updated_at: :desc)
+    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
   end
 
   def show
@@ -14,6 +15,7 @@ class ArticlesController < ApplicationController
     @markdown_article = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {})
     @markdown_article = @markdown_article.render(@article.content || "")
     @comments = Article.where(name: "#{@article.id}-commentaire").order(updated_at: :desc)
+    @twitter_url = request.original_url.to_query('url')
   end
 
   def create
