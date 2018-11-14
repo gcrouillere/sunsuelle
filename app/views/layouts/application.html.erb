@@ -17,6 +17,12 @@
     <!-- Twitter image -->
     <meta name="twitter:image:src" content="<%= meta_image %>">
 
+    <% if request.original_url.include? ".fr" %>
+      <link rel="alternate" hreflang="en" href="<%= request.original_url.gsub(".fr",".com") %>"/>
+    <% elsif request.original_url.include? ".com" %>
+      <link rel="alternate" hreflang="fr" href="<%= request.original_url.gsub(".com",".fr") %>"/>
+    <% end %>
+
     <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
