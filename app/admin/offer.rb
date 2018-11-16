@@ -1,7 +1,7 @@
 ActiveAdmin.register Offer, as: 'Offres' do
   permit_params :title, :description, :showcased, :discount, :ceramique_id
   actions  :index, :destroy, :update, :edit, :show, :new, :create
-  menu priority: 3
+  menu priority: 3, url: -> { admin_offres_path(locale: I18n.locale) }
   config.filters = false
 
   index do

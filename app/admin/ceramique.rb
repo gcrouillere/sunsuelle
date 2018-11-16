@@ -1,6 +1,6 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
   permit_params :name, :description, :stock, :weight, :price_cents, :active, :position, photos: [], category_ids: [], product_theme_ids: []
-  menu priority: 1
+  menu priority: 1, url: -> { admin_produits_path(locale: I18n.locale) }
   config.filters = false
 
   index do
