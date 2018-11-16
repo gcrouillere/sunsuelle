@@ -17,12 +17,9 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = extract_locale_from_tld || I18n.default_locale
-    # if params[:change].present? || params[:locale].present?
-    #   I18n.locale = params[:locale]
-    # else
-    #   locale_trial = extract_locale_from_accept_language_header
-    #   ["fr", "en"].include? locale_trial ? I18n.locale = locale_trial : I18n.locale = "en"
-    # end
+    if params[:change].present? || params[:locale].present?
+      I18n.locale = params[:locale]
+    end
   end
 
   def retrieve_admin
