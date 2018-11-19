@@ -29,10 +29,12 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= include_gon %>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <%= render 'shared/google_tag_manager_head' %>
     <meta name="google-site-verification" content="v6l89V9vrshQNOTxoFGZIg_cAdFHeUFHLdx-FAF2yB8" />
     <meta name="msvalidate.01" content="A2005042705811D0F9A1F93173061E82" />
   </head>
   <body>
+    <%= render 'shared/google_tag_manager_body' %>
     <%= render 'shared/facebookSDK'%>
     <% if @active_theme.name == "default" %>
       <div class="body-<%=@active_theme.name%>">
