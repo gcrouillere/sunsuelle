@@ -8,7 +8,10 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
     column :position
     column :active
     column :name
-    column :description
+    column "Description" do |ceramique|
+      ceramique.description.size > 200 ? etc = " ..." : etc = ""
+      ceramique.description[0..200] + etc
+    end
     column :stock
     column :weight
     column "Catégorie" do |ceramique|
