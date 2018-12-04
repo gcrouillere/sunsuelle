@@ -48,11 +48,12 @@
       flex-direction: column;
       justify-content: space-between;
       margin-left: 20px;
-      background: #171717;
+      background: #242424;
       padding: $padding-large;
       border-radius: $project-border-radius;
       border: 1px solid $primary-opacified;
       height: 100%;
+      margin-bottom: 20px;
       h1 {
         margin: 10px 0px 20px 0px;
         font-size: $font-size-h3;
@@ -134,7 +135,7 @@
         .same-category-product-card {
           display: flex;
           margin: 12px 15px;
-          background-color: #171717;
+          background-color: #242424;
           border-radius: $project-border-radius;
           border: 1px solid $primary-opacified;
           padding: $padding-small;
@@ -218,11 +219,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      background: #171717;
+      background: #242424;
       padding: $padding-small;
       border-radius: $project-border-radius;
       border: 1px solid $primary-opacified;
       width: 100%;
+      margin-bottom: 20px;
        p.description {
         color: white;
         margin-top: 20px;
@@ -254,7 +256,7 @@
           color: white;
           select {
             border: 1px solid white;
-            background: #171717;
+            background: #242424;
           }
         }
       }

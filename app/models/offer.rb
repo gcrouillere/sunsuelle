@@ -1,5 +1,6 @@
 class Offer < ApplicationRecord
   has_many :ceramiques
+  accepts_nested_attributes_for :ceramiques
 
   validates :discount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1, message:'Doit être compris entre 0 et 1 inclus' }
 end

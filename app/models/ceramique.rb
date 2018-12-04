@@ -22,7 +22,7 @@ class Ceramique < ApplicationRecord
   has_many :product_themes, through: :product_theme_associations, dependent: :destroy
   belongs_to :offer, required: false
   has_attachments :photos, maximum: 4, dependent: :destroy
-  has_many :basketlines, dependent: :destroy
+  has_many :basketlines
 
   monetize :price_cents
 
