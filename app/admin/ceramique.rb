@@ -32,7 +32,10 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
       f.input :categories, as: :check_boxes
       f.input :product_themes, as: :check_boxes
       f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
-      f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit."
+    end
+    f.inputs "Images", class: 'product_images' do
+      f.object.photos.each {|photo| img(src: cl_image_path(photo.path, :width=>250, :crop=>"scale"))} unless f.object.new_record?
+      f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
     end
     f.actions
   end
@@ -49,13 +52,14 @@ show do |ceramique|
     row :price_cents
     row :images do |ceramique|
       ceramique.photos.each do |photo|
-        span img(src: "http://res.cloudinary.com/#{ENV['CLOUDINARY_NAME']}/image/upload/#{photo.path}")
+        span img(src: cl_image_path(photo.path, :width=>250, :crop=>"scale"))
       end
     end
   end
  end
 
  csv do
+    column :position
     column :name
     column :position
     column :active
@@ -94,7 +98,13 @@ show do |ceramique|
     end
 
     def destroy
-      flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
+      if Order.where(state: ["pending","payment page"]).joins(:basketlines).where("basketlines.ceramique_id = ?", resource.id).present?
+        flash[:alert] = "Ce produit est dans un panier dans le processus d'achat, vous ne pouvez pas le supprimer"
+        redirect_to request.referrer and return
+      else
+        resource.basketlines.update(ceramique_id: nil)
+        flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
+      end
       super do |format|
         redirect_to admin_produits_path and return
       end

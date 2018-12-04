@@ -88,7 +88,7 @@ class PaymentsController < ApplicationController
     end
   end
 
-def document_order_basketlines
+  def document_order_basketlines
     @order.basketlines.each do |basketline|
       @order.promo.present? ? order_discount = @order.promo.percentage : order_discount = 0
       if basketline.ceramique
@@ -97,6 +97,7 @@ def document_order_basketlines
         basketline.update(
           ceramique_name: basketline.ceramique.name,
           ceramique_qty: basketline.quantity,
+          ceramique_id_on_order: basketline.ceramique.id,
           basketline_price: ((basketline.ceramique.price * (1 - ceramique_discount)) * basketline.quantity * (1 - order_discount))
           )
       end

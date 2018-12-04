@@ -45,7 +45,7 @@
   <% end %>
 
 <!-- LAPTOP -->
-    <div class="hidden-xs hidden-sm col-lg-3">
+    <div class="hidden-xs hidden-sm hidden-md col-lg-3">
       <div id="ceramique-filters-content">
         <h2><%= t(:filter) %></h2>
         <form action="/<%=ENV['MODEL']%>" method='get'>
@@ -60,7 +60,13 @@
                 <% end %>
               </ul>
               <h3><%=t(:max_price)%></h3>
-              <input type="number" name="prix_max" min="0" class="prix">
+              <section class="range-slider">
+                <span class="rangeValues"></span>
+                <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 %>
+                <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
+                <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+                <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+              </section>
             </div>
             <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
               <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
@@ -72,75 +78,26 @@
       </div>
     </div>
 
-    <% if  @ceramiques.present? %>
+    <% if @ceramiques.present? %>
       <div class="col-xs-12 col-lg-9 ceramique-list">
-        <% @ceramiques.each do |ceramique| %>
-            <div class="col-xs-12 col-sm-6">
-              <%= link_to ceramique_path(ceramique), title: "#{ceramique.name}", class: "cardlink" do %>
-              <% ceramique == @ceramiques.last ? additionnal_class = "last-ceramique" : additionnal_class = "" %>
-                <div class="ceramiquecard <%=additionnal_class%>">
-                  <% if ceramique.offer%>
-                    <% if ceramique.offer.discount > 0 %>
-                      <p class="discount-offer">-<%= (ceramique.offer.discount * 100).to_i %>%</p>
-                      <div class="ribbon"></div>
-                    <% end %>
-                  <% end %>
-                  <div class="img-container img-container<%=ceramique.id%>">
-                    <style>
-                      .img-container<%=ceramique.id%> {
-                        background-image: url(<%= cl_image_path(ceramique.photos[0].path, :quality => "auto")%>);
-                        background-size: cover;
-                        background-position-y: center;
-                        background-position-x: center;
-                      }
-                    </style>
-                    <% if  ceramique.stock == 0%>
-                      <div class="ceramiques-card-circle soldout default-circle"><p>Indisponible</p></div>
-                    <% end %>
-                    <% ceramique.offer ? discount =  ceramique.offer.discount : discount = 0 %>
-                    <h2 class="prix-index hidden-xs hidden-sm"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                    <% if ceramique.offer %>
-                      <% if ceramique.offer.discount > 0 %>
-                        <div class="allpricesmobile-w hidden-md hidden-lg">
-                          <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                          <h3 class="previous-price-mobile"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
-                        </div>
-                      <% else %>
-                        <div class="allpricesmobile-w-zero hidden-md hidden-lg">
-                          <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                        </div>
-                      <% end %>
-                    <% if ceramique.offer.discount > 0 %>
-                      <h3 class="previous-price hidden-xs hidden-sm"><%= humanized_money(ceramique.price)%> <%= currency_symbol %></h3>
-                    <% end %>
-                    <% else %>
-                      <div class="allpricesmobile-wo hidden-md hidden-lg">
-                        <h2 class="prix-index-mobile"><%= humanized_money(ceramique.price * (1 - discount))%> <%= currency_symbol %></h2>
-                      </div>
-                  <% end %>
-                  </div>
-                  <h2 class="hidden-xs "> <%= ceramique.name.capitalize%> </h2>
-                  <h2 class="card-mobile-h2 hidden-sm hidden-md hidden-lg"> <%= ceramique.name.capitalize%> </h2>
-                  <% ratio = ceramique.photos[0].width.to_f / ceramique.photos[0].height  %>
-                  <% ratio < 1 ? ratio = "small" : ratio = "small" %>
-                  <p class="<%= ratio %> hidden-xs"> <%= ceramique.description%> </p>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="col-xs-12 col-lg-9 no-ceramique-list">
-          <div class="no-ceramique">
-            <p><%=t(:no_product)%></p>
-            <%= link_to t(:all_products), ceramiques_path, class: "btn btn-primary" %>
+        <% @ceramiques.each_with_index do |ceramique, index| %>
+          <div class="col-xs-12 col-sm-6 col-md-6">
+            <%= render 'shared/ceramiques_cards_default', ceramique: ceramique, index: index %>
           </div>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="col-xs-12 col-lg-9 no-ceramique-list">
+        <div class="no-ceramique">
+          <p><%=t(:no_product)%></p>
+          <%= link_to t(:all_products), ceramiques_path, class: "btn btn-primary" %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
 
 <!-- MOBILE -->
 
-<div class="hidden-md hidden-lg">
+<div class="hidden-lg">
   <div id="ceramique-filters-content-mobile">
     <h2>Filtrer<i id="close-search" class="fa fa-times-circle cross-1" aria-hidden="true"></i></h2>
     <form action="/<%=ENV['MODEL']%>" method='get'>
@@ -154,7 +111,13 @@
             <% end %>
           </ul>
           <h3><%=t(:max_price)%></h3>
-          <input type="number" name="prix_max" min="0" class="prix">
+          <section class="range-slider">
+            <span class="rangeValues"></span>
+            <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 %>
+            <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
+            <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+            <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+          </section>
         </div>
         <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
           <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
@@ -168,7 +131,7 @@
   </div>
 </div>
 
-<div id="mobile-filter-search" class="hidden-md hidden-lg">
+<div id="mobile-filter-search" class="hidden-lg">
   <i class="fa fa-search" aria-hidden="true"></i>
 </div>
 
