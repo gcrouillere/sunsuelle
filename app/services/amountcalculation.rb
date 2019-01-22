@@ -15,7 +15,8 @@ class Amountcalculation
     end
     if user
       if user.country == "FR" && total_weight > 0 && amount_ceramique < 60.to_money
-        fr_shipping_cost(amount_ceramique, total_weight)
+        shipping_cost = ShippingCategory.where(alpha2: "FR").where("weight >= ?", total_weight).min.price_cents.to_f / 100
+        {total: amount_ceramique, port: shipping_cost.to_money, weight: total_weight}
       elsif user.country == "FR" && total_weight > 0 && amount_ceramique > 60.to_money
         {total: amount_ceramique, port: 0, weight: total_weight}
       elsif total_weight > 0
@@ -28,7 +29,8 @@ class Amountcalculation
       if total_weight > 0 && I18n.locale.to_s == "fr" && amount_ceramique > 60.to_money
         {total: amount_ceramique, port: 0, weight: total_weight}
       elsif total_weight > 0 && I18n.locale.to_s == "fr" && amount_ceramique < 60.to_money
-        fr_shipping_cost(amount_ceramique, total_weight)
+        shipping_cost = ShippingCategory.where(alpha2: "FR").where("weight >= ?", total_weight).min.price_cents.to_f / 100
+        {total: amount_ceramique, port: shipping_cost.to_money, weight: total_weight}
       elsif total_weight > 0
         shipping_cost = ShippingCategory.where(alpha2: "US").where("weight >= ?", total_weight).min.price_cents.to_f / 100
         {total: amount_ceramique, port: shipping_cost, weight: total_weight}
@@ -38,12 +40,16 @@ class Amountcalculation
     end
   end
 
-  def fr_shipping_cost(amount_ceramique, total_weight)
-    tarif_colis = HTTParty.get(
-      "https://api.laposte.fr/tarifenvoi/v1?type=colis&poids=#{total_weight}",
-      headers: {"X-Okapi-Key" => ENV['LAPOSTE_API_KEY'] }
-    )
-    return {total: amount_ceramique, port: tarif_colis[0]["price"].to_money, weight: total_weight}
-  end
+  # API Deprecated by La Poste
+  # def fr_shipping_cost(amount_ceramique, total_weight)
+  #   tarif_colis = HTTParty.get(
+  #     "https://api.laposte.fr/tarifenvoi/v1?type=colis&poids=#{total_weight}",
+  #     headers: {"X-Okapi-Key" => ENV['LAPOSTE_API_KEY'] }
+  #   )
+  #   tarif_colis.empty? ? port = ShippingCategory.where(alpha2: "FR").where("weight >= ?", total_weight).min.price_cents.to_f / 100 : port = tarif_colis[0]["price"]
+  #   return {total: amount_ceramique, port: port.to_money, weight: total_weight}
+  # end
 
 end
+
+
