@@ -7,9 +7,6 @@
   <% request.host.split('.').last == "com" ? root = "https://www.sunsuelle.com" : root = "https://www.sunsuelle.fr" %>
   <url>
     <loc><%="#{root}"%></loc>
-    <image:image>
-      <image:loc><%="#{root}"%><%= image_path ENV['HOMEPIC']%></image:loc>
-    </image:image>
     <lastmod>2018-11-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
