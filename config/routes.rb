@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   mount Attachinary::Engine => "/attachinary"
 
   scope do
-    resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show]
+    get '/sacs/update_positions_after_swap_in_admin', to: "ceramiques#update_positions_after_swap_in_admin"
+    resources :ceramiques, path: ENV['MODEL'], only: [:create, :index, :destroy, :show, :update]
   end
 
   resources :orders, only: [:show, :create, :destroy] do
