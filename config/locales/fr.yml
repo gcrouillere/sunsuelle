@@ -64,6 +64,7 @@ fr:
   hello: "Bonjour"
   add_to_basket: "Ajouter au panier"
   out_of_stock: "Indisponible actuellement"
+  out_of_stock_product_list: "Indisponible"
   no_product: "Nous sommes désolés, aucun produit ne correspond à cette recherche"
   all_products: "TOUS LES PRODUITS"
   display: "AFFICHER"
