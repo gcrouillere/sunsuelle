@@ -149,6 +149,8 @@ fr:
   continue_shopping: "Continuer le shopping"
   latest_products: "Vos préférés"
   latest_offer: "Cadeau de bienvenue"
+  pay_by_card: "Payer par carte"
+  payment_failure: "Erreur lors du paiement, votre carte n'a pas été débitée. Veuillez réessayer."
   day:
     one: "Jour"
     other: "Jours"

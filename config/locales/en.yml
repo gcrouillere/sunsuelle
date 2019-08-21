@@ -152,6 +152,8 @@ en:
   send_your_message: "Type your message here"
   send: "SEND"
   about: "About"
+  pay_by_card: "Pay by card"
+  payment_failure: "Payment failure, your card was not charged. Please retry."
   continue_shopping: "Continue shopping"
   latest_products: "Your favourites"
   latest_offer: "Welcome giveaway"
