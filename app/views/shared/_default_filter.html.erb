@@ -1,5 +1,6 @@
-<div id="ceramique-filters-content-lighttheme">
-  <h2><%= t(:filter).upcase %><i id="close-search" class="fa cross-1" aria-hidden="true">&times;</i></h2>
+<div class="hidden-xs hidden-sm col-md-3">
+  <div id="ceramique-filters-content">
+  <h2><%= t(:filter).upcase %></h2>
   <form action="/<%=ENV['MODEL']%>" method='get'>
     <div class="form-body">
     <input type="search" id="aa-search-input" class="aa-input-search aa-input-mobile" placeholder="<%=t(:search_place_holder)%>" name="search" autocomplete="off" />
@@ -34,4 +35,5 @@
       <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display)%>">
     </div>
   </form>
+  </div>
 </div>

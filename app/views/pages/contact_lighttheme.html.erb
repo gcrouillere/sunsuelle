@@ -10,6 +10,31 @@
   <%= @avatarpicpath %>
 <% end %>
 
+ <!-- LAPTOP -->
+<div class="hidden-xs photos-and-maps">
+  <div class="atelier">
+    <%= photo_update('avatarphoto', '', '', '', 30, '.avatarpic', "Mise à jour photo perso")%>
+    <%= @avatarpictag %>
+  </div>
+  <div class="localisation-contact">
+    <div class="city-img">
+      <%= photo_update('cityphoto', -3, '', '', 15, '.citypic', "Mise à jour photo ville")%>
+      <style>
+        .city-img {
+          background-image: url(<%= cl_image_path @citypicpath %>);
+          background-size: cover;
+          background-position-y: center;
+          background-position-x: center;
+          width: 100%;
+          height: 50%;
+        }
+      </style>
+    <div class="white-bar"></div>
+    </div>
+    <div class="map-container"><div id="map"></div></div>
+  </div>
+</div>
+
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">
     <% if user_signed_in? && current_user.admin %>
@@ -46,31 +71,6 @@
 <!-- MOBILE -->
 <div class="col-xs-12 hidden-sm hidden-md hidden-lg contact-form">
   <%= render 'shared/subscribe_default' %>
-</div>
-
-<!-- LAPTOP -->
-<div class="hidden-xs photos-and-maps">
-  <div class="atelier">
-    <%= photo_update('avatarphoto', '', '', '', 30, '.avatarpic', "Mise à jour photo perso")%>
-    <%= @avatarpictag %>
-  </div>
-  <div class="localisation-contact">
-    <div class="city-img">
-      <%= photo_update('cityphoto', -3, '', '', 15, '.citypic', "Mise à jour photo ville")%>
-      <style>
-        .city-img {
-          background-image: url(<%= cl_image_path @citypicpath %>);
-          background-size: cover;
-          background-position-y: center;
-          background-position-x: center;
-          width: 100%;
-          height: 50%;
-        }
-      </style>
-    <div class="white-bar"></div>
-    </div>
-    <div class="map-container"><div id="map"></div></div>
-  </div>
 </div>
 
 <!-- MOBILE -->

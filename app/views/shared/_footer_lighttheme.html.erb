@@ -20,67 +20,50 @@
         <p class="last-box-first-p hidden-xs hidden-sm"><%=t(:customer_service_hours)%></p>
         <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_1)%></p>
         <p class="last-box-first-p hidden-md hidden-lg"><%=t(:customer_service_hours_mobile_2)%></p>
-        <p class="last-box-last-p"><%= I18n.locale.to_s == "fr" ? "06 50 81 42 97" : "+33 6 50 81 42 97"%></p>
       </div>
     </div>
     <div class="footer-bottom-section">
       <div class="contact">
         <div class="connect">
-          <h3><%= t(:our_products) %></h3>
-          <% @uniq_categories.each do |category|%>
-           <h4><%= link_to "#{category}", ceramiques_path(categories: ["#{category}"]), title: "découvrir les #{category} en vente sur le site" %></h4>
-          <% end %>
+          <h3>
+            <%= link_to contact_path do%>
+              <%=t(:contact)%>
+            <% end %>
+          </h3>
         </div>
         <div class="connect">
-          <h3><%= t(:our_collections) %></h3>
-          <% @uniq_themes.each do |theme|%>
-            <h4><%= link_to "#{theme}", ceramiques_path(themes: ["#{theme}"]), title: "Les produits de la collection #{theme} en vente sur le site" %></h4>
-          <% end %>
+          <h3>
+            <%= link_to info_path do%>
+              <%=t(:info_link)%>
+            <% end %>
+          </h3>
         </div>
         <div class="connect">
-          <h3><%=t(:stay_caught_up).upcase%></h3>
-          <h4><%= link_to "Facebook", "https://www.facebook.com/sunsuelle/", target: "blank" %></h4>
-          <h4><%= link_to "Instagram", "https://www.instagram.com/sunsuelle/", target: "blank" %></h4>
+          <h3>
+            <%= link_to cgv_path do%>
+              <%=t(:cgv_short)%>
+            <% end %>
+          </h3>
         </div>
         <div class="connect">
-          <h3><%=t(:information).upcase%></h3>
-          <%= link_to cgv_path do%>
-            <h4><%=t(:cgv_short)%></h4>
-          <% end %>
-          <%= link_to legal_path do%>
-            <h4><%=t(:data)%></h4>
-          <% end %>
+          <h3>
+            <%= link_to legal_path do%>
+              <%=t(:data)%>
+            <% end %>
+          </h3>
+        </div>
+        <div class="connect">
           <div class="hidden-xs hidden-sm hidden-md">
             <% if user_signed_in? %>
               <% if current_user.admin %>
-                <%= link_to admin_root_path, class: "admin-link" do %>
-                  <h4>Administration</h4>
-                <% end %>
-              <% end %>
-              <%= link_to destroy_user_session_path, method: :delete do %>
-                <h4><%=t(:unconnect)%></h4>
-              <% end %>
-            <% else %>
-              <%= link_to new_user_session_path, class: "connect-link" do %>
-                <h4><%=t(:connect)%></h4>
+                <h3>
+                   <%= link_to admin_root_path, class: "admin-link" do %>
+                    Administration
+                   <% end %>
+                </h3>
               <% end %>
             <% end %>
           </div>
-        </div>
-        <div class="connect">
-          <h3>SITE</h3>
-          <%= link_to about_path do %>
-            <h4><%=t(:about)%></h4>
-          <% end %>
-          <%= link_to articles_path do %>
-            <h4><%=t(:blog_link)%></h4>
-          <% end %>
-          <%= link_to info_path do %>
-            <h4><%=t(:info_link)%></h4>
-          <% end %>
-          <%= link_to contact_path do %>
-            <h4><%=t(:contact)%></h4>
-          <% end %>
         </div>
       </div>
       <%= link_to @dev_redirection || session[:dev_redirection_default], title: "Créez votre boutique en ligne avec l'agence de Guillaume Crouillere", class: "link-guillaume" do %>

@@ -29,16 +29,20 @@
     border-radius: 1px;
     padding: 21px 34px;
     font-size: 14px;
-    color: white;
-    border: 1px solid #7c2529;
-    background-color: rgba(200, 16, 46, 0.9);
-    box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+    color: black;
+    border: 1px solid #45454d;
+    // background-color: #ffe4d4;
+    background-color: #ffe4d4;
+    // box-shadow: 3px 3px #FA3922;
+    box-shadow: 3px 3px #FA3922;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
   .btn.btn-primary:hover {
-    background-color: rgba(249, 205, 99, 0.9);
-    border: 1px solid #FF6F61;
-    box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
+    // background-color: #FA3922;
+    background-color: #FA3922;
+    box-shadow: 3px 3px #FFA44D;
+    border: 1px solid #45454d;
+    // box-shadow: 3px 3px #FFA44D;
     color: white;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
@@ -82,16 +86,16 @@
     border-radius: 1px;
     padding: 18px 29px;
     font-size: 12px;
-    color: white;
-    border: 1px solid #7c2529;
-    background-color: rgba(200, 16, 46, 0.9);
-    box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+    color: black;
+    border: 1px solid #45454d;
+    background-color: #ffe4d4;
+    box-shadow: 3px 3px #FA3922;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
   .subscribe-submit:hover {
-    background-color: rgba(249, 205, 99, 0.9);
-    border: 1px solid #FF6F61;
-    box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
+    background-color: #FA3922;
+    border: 1px solid #45454d;
+    box-shadow: 3px 3px #FFA44D;
     color: white;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
@@ -117,16 +121,16 @@
     border-radius: 1px;
     padding: 18px 29px;
     font-size: 12px;
-    color: white;
-    border: 1px solid #7c2529;
-    background-color: rgba(200, 16, 46, 0.9);
-    box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+    color: black;
+    border: 1px solid #45454d;
+    background-color: #ffe4d4;
+    box-shadow: 3px 3px #FA3922;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
   .subscribe-submit:hover {
-    background-color: rgba(249, 205, 99, 0.9);
-    border: 1px solid #FF6F61;
-    box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
+    background-color: #FA3922;
+    border: 1px solid #45454d;
+    box-shadow: 3px 3px #FFA44D;
     color: white;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
@@ -163,25 +167,25 @@
 
 .content-lighttheme {
   padding: 0px;
-  border-image: linear-gradient(to right, #FF6F61, #f93822) 1;
-  border-width: 20px;
-  border-style: solid;
-  border-bottom: 0px;
-  border-top: 0px;
+  // border-image: linear-gradient(to right, #FF6F61, #f93822) 1;
+  // border-width: 20px;
+  // border-style: solid;
+  // border-bottom: 0px;
+  // border-top: 0px;
   .lighttheme {
     border-radius: 1px;
     padding: 21px 34px;
     font-size: 14px;
-    color: white;
-    border: 1px solid #7c2529;
-    background-color: rgba(200, 16, 46, 0.9);
-    box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+    color: black;
+    border: 1px solid #45454d;
+    background-color: #ffe4d4;
+    box-shadow: 3px 3px #FA3922;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }
   .lighttheme:hover {
-    background-color: rgba(249, 205, 99, 0.9);
-    border: 1px solid #FF6F61;
-    box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
+    background-color: #FA3922;
+    border: 1px solid #45454d;
+    box-shadow: 3px 3px #FFA44D;
     color: white;
     transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
   }

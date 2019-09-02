@@ -25,16 +25,11 @@
     </div>
     <% if @promophoto %>
       <div class="promo-frame">
-        <span class="latest-products"><%= t(:latest_offer)%></span>
         <%= link_to ceramiques_path(offer: true) do %>
           <%= cl_image_tag @promophoto %>
         <% end %>
       </div>
     <% end %>
-    <div class="ceramiques-in-home">
-      <span class="latest-products"><%= t(:latest_products)%></span>
-      <%= render  'shared/ceramique_cards_lighttheme_homepage'%>
-    </div>
   </div>
 
 <%= render 'shared/schema_org_jsons/home_page_json' %>

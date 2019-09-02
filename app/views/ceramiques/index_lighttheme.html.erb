@@ -7,19 +7,11 @@
 
 <%= render 'shared/lighttheme_photo_loading'%>
 
-<% if  @ceramiques.present? %>
-  <%= render  'shared/ceramique_cards_lighttheme'%>
-<% else %>
-  <div class="container-lighttheme">
-    <div class="row">
-      <div class="col-xs-12 no-ceramique-list">
-        <div class="no-ceramique">
-          <p><%=t(:no_product)%></p>
-          <%= link_to t(:all_products), ceramiques_path, class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
+<div class="container-lighttheme">
+  <div class="row">
+    <%= render 'shared/default_filter' %>
+    <%= render  'shared/ceramique_cards_lighttheme'%>
   </div>
-<% end %>
+</div>
 
 <%= render 'shared/schema_org_jsons/ceramiques_index_json' %>

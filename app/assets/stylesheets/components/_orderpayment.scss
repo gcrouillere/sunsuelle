@@ -44,17 +44,17 @@
       padding: 6px 12px;
       font-size: 14px;
       margin: auto;
-      color: white;
-      border: 1px solid #7c2529;
-      background-color: rgba(200, 16, 46, 0.9);
-      box-shadow: 3px 3px rgba(249, 205, 99, 0.9);
+      color: black;
+      border: 1px solid #45454d;
+      background-color: #ffe4d4;
+      box-shadow: 3px 3px #FA3922;
       transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
     }
 
     .laptop-link-coord:hover {
-      background-color: rgba(249, 205, 99, 0.9);
-      border: 1px solid #FF6F61;
-      box-shadow: 3px 3px rgba(200, 16, 46, 0.9);
+      background-color: #FA3922;
+      border: 1px solid #45454d;
+      box-shadow: 3px 3px #FFA44D;
       color: white;
       transition: 0.1s background-color, box-shadow linear, 0.1s color linear;
     }

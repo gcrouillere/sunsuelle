@@ -31,17 +31,11 @@ class ApplicationController < ActionController::Base
   end
 
   def uniq_categories
-    @uniq_categories = ::Ceramique.all.map do |ceramique|
-      ceramique.categories.map{|categorie| categorie.name}
-    end
-    @uniq_categories = @uniq_categories.flatten.uniq.sort
+    @uniq_categories = ::Category.joins(:ceramiques).map(&:name).uniq.sort
   end
 
   def uniq_themes
-    @uniq_themes = ::Ceramique.all.map do |ceramique|
-      ceramique.product_themes.map{|theme| theme.name}
-    end
-    @uniq_themes = @uniq_themes.flatten.uniq.sort
+    @uniq_themes = ::ProductTheme.joins(:ceramiques).map(&:name).uniq.sort
   end
 
   #DEVISE methods:
