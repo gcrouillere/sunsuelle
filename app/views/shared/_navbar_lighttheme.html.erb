@@ -81,11 +81,9 @@
     </div>
     <div class="menus">
       <div class="nav-bar-list">
-        <div class="shop-dropdown">
-          <div class="nav-link nav-link-no-hover link-with-bars">
-            <span ><%=t(:shop_link).upcase%></span>
-          </div>
-        </div>
+        <%= link_to ceramiques_path, class: "nav-link nav-link-no-hover link-with-bars" do %>
+          <span ><%=t(:shop_link).upcase%></span>
+        <% end %>
         <%= link_to about_path, class: "nav-link" do %>
           <span><%= t(:about)%></span>
         <% end %>
