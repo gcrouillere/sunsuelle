@@ -43,24 +43,31 @@
           <div class="info-add-basket-lighttheme">
             <div class="description">
               <h1> <%= @ceramique.name%> </h1>
-              <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
-              <div class="lighttheme-prices-show">
-                <h2> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
-                <% if @ceramique.offer %>
-                  <% if @ceramique.offer.discount > 0 %>
-                    <h2 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
-                  <% end %>
-                <% end %>
-              </div>
-              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
+              <%= facebook_share_id("facebookshare") %>
+              <hr>
             </div>
             <div class="prix-form">
               <% if  @ceramique.stock > 0 %>
                 <form action="/orders" method="post" authenticity_token="true" class="form">
                   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                  <label for="quantity"><%= t(:quantity)%> </label>
-                  <div class="qte">
-                    <input type="number" name="quantity" min="1" max="<%=@ceramique.stock%>" value="1">
+                  <div class="form-left">
+                    <div class="lighttheme-prices-show">
+                      <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
+                      <h2> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
+                      <% if @ceramique.offer %>
+                        <% if @ceramique.offer.discount > 0 %>
+                          <h2 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
+                        <% end %>
+                      <% end %>
+                    </div>
+                    <div class="qte">
+                      <label for="quantity"><%= t(:qte)%> </label>
+                      <select name="quantity">
+                        <% for i in 1..@ceramique.stock %>
+                          <option value="<%= i %>"><%= i %></option>
+                        <% end %>
+                      </select>
+                    </div>
                   </div>
                   <input type="hidden" name="ceramique" value="<%= @ceramique.id%>">
                   <input type="hidden" name="locale" value="<%= I18n.locale%>">
@@ -70,7 +77,10 @@
                   <h2 class="stock0"><%= t(:out_of_stock)%></h2>
               <% end %>
             </div>
-            <%= facebook_share_id("facebookshare") %>
+            <div class="description">
+              <hr>
+              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
+            </div>
           </div>
           </div>
 
@@ -141,18 +151,14 @@
 
       <div class="product-show-mobile text center">
         <div class="info-add-basket info-basket-lightheme-mobile">
-          <div class="description">
-            <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe %> </p>
-            <hr>
-          </div>
           <div class="prix-form">
             <% @ceramique.offer ? discount =  @ceramique.offer.discount : discount = 0 %>
             <h2> <%= humanized_money(@ceramique.price * (1 - discount))%> <%= currency_symbol %> </h2>
             <% if @ceramique.offer %>
-                  <% if @ceramique.offer.discount > 0 %>
-                    <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
-                  <% end %>
-                <% end %>
+              <% if @ceramique.offer.discount > 0 %>
+                <h3 class="previous-price"><%= humanized_money(@ceramique.price)%> <%= currency_symbol %></h3>
+              <% end %>
+            <% end %>
             <% if  @ceramique.stock > 0 %>
               <form action="/orders" method="post" authenticity_token="true" class="form">
                 <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
@@ -173,6 +179,10 @@
             <% else %>
                 <h2 class="stock0"><%= t(:out_of_stock) %></h2>
             <% end %>
+          </div>
+          <hr>
+          <div class="description">
+            <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe %> </p>
           </div>
         </div>
       </div>

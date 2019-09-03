@@ -28,7 +28,7 @@ fr:
   facebook_connect: "Créer un compte avec"
   facebook_connect_mobile: "Connexion avec"
   alternate_connection: "Ou connexion avec votre email :"
-  connect: "Mon compte"
+  connect: "Se connecter"
   devise_connect: "Se connecter"
   unconnect: "Se deconnecter"
   remember_me: "Se souvenir de moi"
@@ -180,8 +180,8 @@ fr:
         other: "Catégories"
       calendarupdate: "Bloquage de période"
       product_theme:
-        one: "Thème"
-        other: "Thèmes"
+        one: "Collection"
+        other: "Collections"
       lesson:
         one: "Réservation"
         other: "Réservations"

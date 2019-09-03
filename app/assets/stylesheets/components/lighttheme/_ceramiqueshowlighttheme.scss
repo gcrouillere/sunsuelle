@@ -51,29 +51,35 @@
       font-weight: $font-weight-h4;
       font-size: 16px;
     }
-    .description {
+    .prix-form {
+      margin-bottom: 25px;
+      form {
+        display: flex;
+        justify-content: space-between;
+        align-items: left;
+      }
+      .form-left {
+        flex: 1 0 auto;
+      }
       .lighttheme-prices-show {
         display: flex;
-        margin-bottom: 25px;
+        justify-content: left;
+        margin-bottom: 10px;
         h2 {
           margin-top: 5px;
           margin-left: 0px;
-          font-size: 15px;
+          font-size: 20px;
         }
         .previous-price {
           text-decoration: line-through;
           margin-left: 10px;
         }
       }
-    }
-    .prix-form {
-      margin-bottom: 25px;
       label {
         font-weight: $font-weight-h4;
         font-size: 16px;
       }
       .qte {
-        margin-bottom: 25px;
         input {
           padding: 5px 10px;
         }
@@ -204,15 +210,26 @@
   }
 }
 
-.info-add-basket.info-basket-lightheme-mobile {
-  border-radius: 1px;
-  margin-bottom: 20px;
-  p.description {
-    margin-top: 10px;
-  }
-  select {
-    border: 1px solid #bfbfbf;
-    background: white;
+.container-lighttheme-show {
+  .info-add-basket.info-basket-lightheme-mobile {
     border-radius: 1px;
+    margin-bottom: 20px;
+    p.description {
+      margin-top: 0px;
+    }
+    select {
+      border: 1px solid #bfbfbf;
+      background: white;
+      border-radius: 1px;
+    }
+    .prix-form {
+      button {
+        flex: 1 0 auto;
+        max-width: 50%;
+      }
+    }
+    hr {
+      width: 100%;
+    }
   }
 }
