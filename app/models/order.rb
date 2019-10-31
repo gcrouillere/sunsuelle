@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
   monetize :amount_cents
   monetize :port_cents
-  has_many :basketlines
+  has_many :basketlines, dependent: :destroy
   belongs_to :promo, required: false
   belongs_to :user, required: false
   belongs_to :lesson, required: false
