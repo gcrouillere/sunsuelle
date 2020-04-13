@@ -14,7 +14,7 @@ class CeramiquesController < ApplicationController
       filter_by_price if params[:prix_max].present?
     end
     @ceramiques = Ceramique.where(id: @ceramiques.map(&:id), active: true).order(position: :asc).order(updated_at: :desc)
-    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
     render "index_#{@active_theme.name}"
@@ -22,7 +22,7 @@ class CeramiquesController < ApplicationController
 
   def show
     session[:zoom_message] ? session[:zoom_message] += 1 : session[:zoom_message] = 0
-    @dev_redirection = "https://www.creermonecommerce.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
     clean_orders
     @ceramique = Ceramique.find(params[:id])
     @same_category_products = Ceramique.where(active: true).where.not(id: @ceramique.id).joins(:categories).where(categories: @ceramique.categories.map(&:id)).uniq

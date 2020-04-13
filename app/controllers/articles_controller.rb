@@ -7,7 +7,7 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.where("name LIKE ?", "%article%").order(updated_at: :desc)
-    @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
   end
 
   def show
